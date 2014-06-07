@@ -1,6 +1,9 @@
 RealRandomGame
 ==============
 
+Requirements:
+Python 3.2 or 2.7, Pygame 1.9.2, and TQDM(working on it).
+
 (NEW) (REAL) A simple, stupid game created as a project for school to teach people about Python programming.
 
 Email me at poniesfim@hushmail.com
