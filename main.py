@@ -58,6 +58,9 @@ what = pygame.mixer.Sound('Sounds\\what.ogg') #A rage sound that plays when an e
 #Extras.
 endSound = pygame.mixer.Sound('Sounds\\end.ogg') #The end sound when an enemy approaches you.
 gunshot = pygame.mixer.Sound('Sounds\\lasergun.wav') #The sound the plays when you click the mouse(shoot a gun).
+weed = pygame.mixer.Sound("Sounds\\weed.ogg") #Extra sound that plays when kill.
+tripleKill = pygame.mixer.Sound("Sounds\\triplekill.ogg")  #Extra sound that plays when kill.
+toasty = pygame.mixer.Sound("Sounds\\toasty.ogg") #Extra sound that plays when kill.
 print("Finished loading the sounds...")
 
 #We now have some fonts to prepare.
@@ -250,22 +253,40 @@ while True:
     
     if onePlay == True: #When the game wants to play a sound because of a Creeper being hit,
         current1play = random.randint(1,3) #Get a random number.
+        current1play2 = random.randint(1,4) #Get another random number.
         if current1play == 1: #If the number is 1,
             kiddingMe.play() #Play this sound.
         elif current1play == 2: #If the number is 2,
             comeOn.play() #Play this sound.
         elif current1play == 3: #If the number is 3,
             what.play() #Play this sound.
+        if current1play2 == 1:
+            filler = 0 #Unknown purpose.
+        elif current1play2 == 2:
+            weed.play() #Play this sound.
+        elif current1play2 == 3:
+            tripleKill.play() #Play this sound.
+        elif current1play2 == 4:
+            toasty.play() #Play this sound.
         onePlay = False #Set this variable to false to make sure sounds don't play again until Creeper gets hit again.
     
     if twoPlay == True: #When the game wants to play a sound because of an enemy Sniper being hit,
         current2play = random.randint(1,3) #Get a random number.
+        current2play2 = random.randint(1,4) #Get another random number.
         if current2play == 1: #If the number is 1,
             kiddingMe.play() #Play this sound.
         elif current2play == 2: #If the number is 2,
             comeOn.play() #Play this sound.
         elif current2play == 3: #If the number is 3,
             what.play() #Play this sound.
+        if current2play2 == 1:
+            filler = 0 #Unknown purpose.
+        elif current2play2 == 2:
+            weed.play() #Play this sound.
+        elif current2play2 == 3:
+            tripleKill.play() #Play this sound.
+        elif current2play2 == 4:
+            toasty.play() #Play this sound.
         twoPlay = False #Set this variable to false to make sure sounds don't play again until enemy Sniper gets hit again.
     if characterX > otherX2: #If the Creeper approaches the character,
         rekt = True #set rekt to true, to make the game know that it has to do things.
