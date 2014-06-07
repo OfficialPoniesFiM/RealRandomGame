@@ -6,7 +6,7 @@ print "RandomGame Copyright (C) 2014 Nathan Guerrero/PoniesFiM" #First line
 print "This program comes with ABSOLUTELY NO WARRANTY; for details go to GPL.txt or README.txt" #Second line
 print "This is free software, and you are welcome to redistribute it" #Third line
 print "under certain conditions." #Fourth line.
-print "\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n"  #Separator.
+print  "\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n"  #Separator.
 
 #We need to import some of the things we need.
 print "Importing things..." 
