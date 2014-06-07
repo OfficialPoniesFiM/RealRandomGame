@@ -44,6 +44,7 @@ hacker2 = pygame.image.load("Pictures\\hacker2.png") #A particle.
 
 #Other stuff.
 cursorImage = pygame.image.load("Pictures\\cursor.png") #We use this as our "cursor".
+logo = pygame.image.load("Pictures\\poniesfimlogo.png") #The logo of the main developer.
 print "Finished loading those things!"
 
 #We have some sounds we need to get.
@@ -307,6 +308,7 @@ while True:
             MAINWINDOW.blit(rhacker2, (hitSniperX, 300)) #We draw another version of the text, "U HACKER".
     
     #Cursor/Scores/similar
+    MAINWINDOW.blit(logo, (540, 380)) #Draw the logo of the main developer.
     MAINWINDOW.blit(cursorImage, (mouseX, mouseY)) #Draw the "cursor" at the mouse position.
     
     scoretext = "Score: " + str(score) #Define what the text for the score is.
