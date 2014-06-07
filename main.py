@@ -151,6 +151,7 @@ while True:
     for event in pygame.event.get(): #looks for events.
         if event.type == QUIT: #This is what happens when someone wants to close the program.
             pygame.quit() #First, Pygame has to quit.
+            print("GitHub at https://github.com/OfficialPoniesFiM/RealRandomGame") #Refers people to the GitHub link.
             sys.exit() #Since we can't reach the end of the line, we have to exit the program with this method.
         
         if event.type == pygame.KEYDOWN: #Checks when someone is pressing a key.
@@ -345,6 +346,7 @@ while True:
         waitTillEnd -= 1 #Remove 1 tick from the variable until we run out. This is useful for the sound and other things.
         if waitTillEnd == 0: #If we run out,
             pygame.quit() #Quit Pygame.
+            print("GitHub at https://github.com/OfficialPoniesFiM/RealRandomGame") #Refers people to the GitHub link.
             sys.exit() #Exit the program.
     
     #The game updates.
