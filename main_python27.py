@@ -158,6 +158,12 @@ while True:
     for event in pygame.event.get(): #looks for events.
         if event.type == QUIT: #This is what happens when someone wants to close the program.
             pygame.quit() #First, Pygame has to quit.
+            #We have to print some copyright stuff. Again.
+            print "RandomGame Copyright (C) 2014 Nathan Guerrero/PoniesFiM" #First line
+            print "This program comes with ABSOLUTELY NO WARRANTY; for details go to GPL.txt or README.txt" #Second line
+            print "This is free software, and you are welcome to redistribute it" #Third line
+            print "under certain conditions." #Fourth line.
+            print "\n"
             print "GitHub at https://github.com/OfficialPoniesFiM/RealRandomGame" #Refers people to the GitHub link.
             sys.exit() #Since we can't reach the end of the line, we have to exit the program with this method.
         
@@ -353,6 +359,12 @@ while True:
         waitTillEnd -= 1 #Remove 1 tick from the variable until we run out. This is useful for the sound and other things.
         if waitTillEnd == 0: #If we run out,
             pygame.quit() #Quit Pygame.
+            #We have to print some copyright stuff. Again.
+            print "RandomGame Copyright (C) 2014 Nathan Guerrero/PoniesFiM" #First line
+            print "This program comes with ABSOLUTELY NO WARRANTY; for details go to GPL.txt or README.txt" #Second line
+            print "This is free software, and you are welcome to redistribute it" #Third line
+            print "under certain conditions." #Fourth line.
+            print "\n"
             print "GitHub at https://github.com/OfficialPoniesFiM/RealRandomGame" #Refers people to the GitHub link.
             sys.exit() #Exit the program.
     
