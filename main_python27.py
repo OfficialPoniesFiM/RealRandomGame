@@ -9,7 +9,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>."""
 
 #We have to print some copyright stuff.
-print RandomGame Copyright (C) 2014 Nathan Guerrero/PoniesFiM" #First line
+print "RandomGame Copyright (C) 2014 Nathan Guerrero/PoniesFiM" #First line
 print "This program comes with ABSOLUTELY NO WARRANTY; for details go to GPL.txt or README.txt" #Second line
 print "This is free software, and you are welcome to redistribute it" #Third line
 print "under certain conditions." #Fourth line.
@@ -110,8 +110,8 @@ for everything in "1 2 3 4 5 6 7 8 9 10".split(): #For everything in 1-10,
 newOldSaveTrue = False
 newCode = "" #Another variable.
 newCode = newCode.join(randomCode) #Add everything in the list of characters to this variable, newCode.
-print newcode
-saveFileName = newcode + ".txt"
+print newCode
+saveFileName = "Saves\\" + newCode + ".txt"
 saveFile = open(saveFileName, "w")
 
 #We need to set up how many times per second Pygame will update, and how we will tick it.
@@ -168,7 +168,7 @@ RegFont = pygame.font.SysFont("Arial", 40, False, False) #This loads Arial at si
 print "Finished loading fonts..."
 
 #We now have to set up statistics for the character, such as the position.
-print "Setting up parameters for the main character...")
+print "Setting up parameters for the main character..."
 #Parameters for the main character.
 characterX = 320 #This is the X(horizontal) position. We use this to move.
 characterY = 300 #This is the Y(vertical) position. We generally don't need this to move. This is just the Y position.
@@ -244,13 +244,13 @@ if directionToGoFirst == 1:
     otherX1 = -200 #This is the X position of the enemy sniper.
 saveFile.close() #Closes the save file.
 #The game loop.
-while True:
+whiles = True
+while whiles:
     saveFile = open(saveFileName, "w")
     pygame.mouse.set_visible(False) #This makes the cursor invisible, so we can use an image as a cursor.
     
     for event in pygame.event.get(): #looks for events.
         if event.type == QUIT: #This is what happens when someone wants to close the program.
-            pygame.quit() #First, Pygame has to quit.
             #We have to print some copyright stuff. Again.
             print "RandomGame Copyright (C) 2014 Nathan Guerrero/PoniesFiM" #First line
             print "This program comes with ABSOLUTELY NO WARRANTY; for details go to GPL.txt or README.txt" #Second line
@@ -258,7 +258,7 @@ while True:
             print "under certain conditions." #Fourth line.
             print "\n"
             print "GitHub at https://github.com/OfficialPoniesFiM/RealRandomGame" #Refers people to the GitHub link.
-            sys.exit() #Since we can't reach the end of the line, we have to exit the program with this method.
+            whiles = False
         
         if event.type == pygame.KEYDOWN: #Checks when someone is pressing a key.
             if event.key == pygame.K_a or event.key == pygame.K_LEFT: #Checks when someone is pressing the A/left key.
@@ -314,13 +314,13 @@ while True:
             mouseY = int(x) #store the Y position in a variable.
     saveFile.write("Mouse Position: " + str(mouseX) + ", " + str(mouseY) + "\n")
     globalDirection += 5 #This sets the direction of the particles.
-    saveFile.write("Particle Direction: " + str(globalDirection))
+    saveFile.write("Particle Direction: " + str(globalDirection) + "\n")
     rmlg = pygame.transform.rotate(mlg, globalDirection) #The rotated version of this particle is stored in another "variable".
     rmachinima = pygame.transform.rotate(machinima, globalDirection) #The rotated version of this particle is stored in another "variable".
     rhacker1 = pygame.transform.rotate(hacker1, globalDirection) #The rotated version of this particle is stored in another "variable".
     rhacker2 = pygame.transform.rotate(hacker2, globalDirection) #The rotated version of this particle is stored in another "variable".
     
-    saveFile.write("Mouse Click Areas: " + str(pygame.mouse.get_pressed()))
+    saveFile.write("Mouse Click Areas: " + str(pygame.mouse.get_pressed()) + "\n")
     
     if pygame.mouse.get_pressed() == (False, False, True): #If the right mouse button is clicked, and the others aren't,
         gunshot.play() #Play a laser gun sound.
@@ -351,7 +351,7 @@ while True:
             hitCreeperTime = 60
         particle = random.randint(1,4) #Sets what particle to use/render.
     
-    saveFile.write("Creeper State: " str(hitCreeper))
+    saveFile.write("Creeper State: " + str(hitCreeper) + "\n")
     
     if hitSniper == True: #If the sniper got hit,
         hitSniperTime -= 1 #Remove 1 tick from this variable until time runs out. Time is used to render particles.
@@ -363,7 +363,7 @@ while True:
         hitSniperTime = 60 #Reset the time to 60 ticks/1 second to make sure time goes correctly.
         otherKilled = False #Unknown purpose.
     
-    saveFile.write("Sniper State: " str(hitSniper))
+    saveFile.write("Sniper State: " + str(hitSniper) + "\n")
     
     if onePlay == True: #When the game wants to play a sound because of a Creeper being hit,
         current1play = random.randint(1,3) #Get a random number.
@@ -425,37 +425,37 @@ while True:
     if hitCreeper == True: #If the Creeper got hit, 
         if particle == 1: #If the random number was 1, 
             MAINWINDOW.blit(rmlg, (hitCreeperX, 350)) #We draw the MLG logo.
-            saveFile.write("Creeper Particles: MLG Logo")
+            saveFile.write("Creeper Particles: MLG Logo\n")
         elif particle == 2: #If the random number was 2,
             MAINWINDOW.blit(rmachinima, (hitCreeperX, 350)) #We draw the Machinima logo.
-            saveFile.write("Creeper Particles: Machinima Logo")
+            saveFile.write("Creeper Particles: Machinima Logo\n")
         elif particle == 3: #If the random number was 3,
             MAINWINDOW.blit(rhacker1, (hitCreeperX, 350)) #We draw a version of the text, "U HACKER".
-            saveFile.write("Creeper Particles: \"U HACKER\"(Black)")
+            saveFile.write("Creeper Particles: \"U HACKER\"(Black)\n")
         elif particle == 4: #If the random number was 4, 
             MAINWINDOW.blit(rhacker2, (hitCreeperX, 350)) #We draw another version of the text, "U HACKER".
-            saveFile.write("Creeper Particles: \"U HACKER\"(Colored)")
+            saveFile.write("Creeper Particles: \"U HACKER\"(Colored)\n")
     
     if hitSniper == True: #If the enemy sniper got hit,
         if particle == 1: #If the random number was 1, 
             MAINWINDOW.blit(rmlg, (hitSniperX, 300)) #We draw the MLG logo.
-            saveFile.write("Sniper Particles: MLG Logo")
+            saveFile.write("Sniper Particles: MLG Logo\n")
         elif particle == 2: #If the random number was 2, 
             MAINWINDOW.blit(rmachinima, (hitSniperX, 300)) #We draw the Macinima logo.
-            saveFile.write("Sniper Particles: Machinima Logo")
+            saveFile.write("Sniper Particles: Machinima Logo\n")
         elif particle == 3:#If the random number was 3, 
             MAINWINDOW.blit(rhacker1, (hitSniperX, 300)) #We draw a version of the text, "U HACKER".
-            saveFile.write("Sniper Particles: \"U HACKER\"(Black)")
+            saveFile.write("Sniper Particles: \"U HACKER\"(Black)\n")
         elif particle == 4: #If the random number was 4, 
             MAINWINDOW.blit(rhacker2, (hitSniperX, 300)) #We draw another version of the text, "U HACKER".
-            saveFile.write("Sniper Particles: \"U HACKER\"(Colored)")
+            saveFile.write("Sniper Particles: \"U HACKER\"(Colored)\n")
     
     #Cursor/Scores/similar
     MAINWINDOW.blit(logo, (540, 380)) #Draw the logo of the main developer.
     MAINWINDOW.blit(cursorImage, (mouseX, mouseY)) #Draw the "cursor" at the mouse position.
     
     scoretext = "Score: " + str(score) #Define what the text for the score is.
-    saveFile.write(scoretext)
+    saveFile.write(scoretext + "\n")
     textscore = RegFont.render(scoretext, 1, ORANGE) #Define the actual text to draw.
     MAINWINDOW.blit(textscore, (0, 0)) #Draw the text on the screen.
     
@@ -468,7 +468,6 @@ while True:
         MAINWINDOW.blit(endRekt, (280, 240)) #Render the text.
         waitTillEnd -= 1 #Remove 1 tick from the variable until we run out. This is useful for the sound and other things.
         if waitTillEnd == 0: #If we run out,
-            pygame.quit() #Quit Pygame.
             #We have to print some copyright stuff. Again.
             print "RandomGame Copyright (C) 2014 Nathan Guerrero/PoniesFiM" #First line
             print "This program comes with ABSOLUTELY NO WARRANTY; for details go to GPL.txt or README.txt" #Second line
@@ -476,7 +475,7 @@ while True:
             print "under certain conditions." #Fourth line.
             print "\n"
             print "GitHub at https://github.com/OfficialPoniesFiM/RealRandomGame" #Refers people to the GitHub link.
-            sys.exit() #Exit the program.
+            whiles = False
     
     #The game updates.
     pygame.display.update()
@@ -486,3 +485,5 @@ while True:
     
     #We wait.
     fpsClock.tick(FPS)
+pygame.quit()
+sys.exit()

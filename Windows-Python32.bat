@@ -1,4 +1,5 @@
 @echo off
-color 1
+color a
 cls
 main.py
+PAUSE
