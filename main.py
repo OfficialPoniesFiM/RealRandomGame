@@ -22,110 +22,97 @@ import random
 from pygame.locals import *
 print("Imported...")
 
-#We'll ask if the user wants to add a new save or use a save.
-print("Do you want to add a new save or use one? (Type \"new\" or \"create\" to create a new, or \"old\" or \"use\" to use an old one.")
-newOldSave = input() #Asks for input.
-newOldSaveTrue = False #This variable represents the state of when a save is unplayable or not.
-
-while newOldSaveTrue == False:
-    while newOldSave not in "new old create use".split(): #While the player isn't typing things correctly,
-        print("Do you want to add a new save or use one? (Type \"new\" or \"create\" to create a new, or \"old\" or \"use\" to use an old one.")
-        newOldSave = input() #Asks for input.
-    if newOldSave in "new create".split():
-        print("Creating save file...")
-        randomCode = [] #All the code for the name of the save that is generated will be appended here.
-        randomNumber = 0 #This is the random number.
-        randomStuff = "" #This is the random character.
-        isCapital = 0 #This variable represents the state of if a character is a capital.
-        for everything in "1 2 3 4 5 6 7 8 9 10".split(): #For everything in 1-10,
-            randomNumber = random.randint(0, 35) #Generate a random number.
+print("Creating save file...")
+randomCode = [] #All the code for the name of the save that is generated will be appended here.
+randomNumber = 0 #This is the random number.
+randomStuff = "" #This is the random character.
+isCapital = 0 #This variable represents the state of if a character is a capital.
+for everything in "1 2 3 4 5 6 7 8 9 10".split(): #For everything in 1-10,
+    randomNumber = random.randint(0, 35) #Generate a random number.
+    
+    if randomNumber == 0: #If the random number is 0,
+        randomStuff = str(0) #The random character is 0 as a string.
+    elif randomNumber == 1: #If the random number is 1,
+        randomStuff = str(1) #The random character is 1 as a string.
+    elif randomNumber == 2: #If the random number is 2,
+        randomStuff = str(2) #The random character is 2 as a string.
+    elif randomNumber == 3: #If the random number is 3,
+        randomStuff = str(3) #The random character is 3 as a string.
+    elif randomNumber == 4: #If the random number is 4,
+        randomStuff = str(4) #The random character is 4 as a string.
+    elif randomNumber == 5: #If the random number is 5,
+        randomStuff = str(5) #The random character is 5 as a string.
+    elif randomNumber == 6: #If the random number is 6,
+        randomStuff = str(6) #The random character is 6 as a string.
+    elif randomNumber == 7: #If the random number is 7,
+        randomStuff = str(7) #The random character is 7 as a string.
+    elif randomNumber == 8: #If the random number is 8,
+        randomStuff = str(8) #The random character is 8 as a string.
+    elif randomNumber == 9: #If the random number is 9,
+        randomStuff = str(9) #The random character is 9 as a string.
+    elif randomNumber == 10: #If the random number is 10,
+        randomStuff = "a" #The random character is "a".
+    elif randomNumber == 11: #If the random number is 11,
+        randomStuff = "b" #The random character is "b".
+    elif randomNumber == 12: #If the random number is 12,
+        randomStuff = "c" #The random character is "c".
+    elif randomNumber == 13: #If the random number is 13,
+        randomStuff = "d" #The random character is "d".
+    elif randomNumber == 14: #If the random number is 14,
+        randomStuff = "e" #The random character is "e".
+    elif randomNumber == 15: #If the random number is 15,
+        randomStuff = "f" #The random character is "f".
+    elif randomNumber == 16: #If the random number is 16,
+        randomStuff = "g" #The random character is "g".
+    elif randomNumber == 17: #If the random number is 17,
+        randomStuff = "h" #The random character is "h".
+    elif randomNumber == 18: #If the random number is 18,
+        randomStuff = "i" #The random character is "i".
+    elif randomNumber == 19: #If the random number is 19,
+        randomStuff = "j" #The random character is "j".
+    elif randomNumber == 20: #If the random number is 20,
+        randomStuff = "k" #The random character is "k".
+    elif randomNumber == 21: #If the random number is 21,
+        randomStuff = "l" #The random character is "l".
+    elif randomNumber == 22: #If the random number is 22,
+        randomStuff = "m" #The random character is "m".
+    elif randomNumber == 23: #If the random number is 23,
+        randomStuff = "n" #The random character is "n".
+    elif randomNumber == 24: #If the random number is 24,
+        randomStuff = "o" #The random character is "o".
+    elif randomNumber == 25: #If the random number is 25,
+        randomStuff = "p" #The random character is "p".
+    elif randomNumber == 26: #If the random number is 26,
+        randomStuff = "q" #The random character is "q".
+    elif randomNumber == 27: #If the random number is 27,
+        randomStuff = "r" #The random character is "r".
+    elif randomNumber == 28: #If the random number is 28,
+        randomStuff = "s" #The random character is "s".
+    elif randomNumber == 29: #If the random number is 29,
+        randomStuff = "t" #The random character is "t".
+    elif randomNumber == 30: #If the random number is 30,
+        randomStuff = "u" #The random character is "u".
+    elif randomNumber == 31: #If the random number is 31,
+        randomStuff = "v" #The random character is "v".
+    elif randomNumber == 32: #If the random number is 32,
+        randomStuff = "w" #The random character is "w".
+    elif randomNumber == 33: #If the random number is 33,
+        randomStuff = "x" #The random character is "z".
+    elif randomNumber == 34: #If the random number is 34,
+        randomStuff = "y" #The random character is "y".
+    elif randomNumber == 35: #If the random number is 35,
+        randomStuff = "z" #The random character is "z".
+    isCapital = random.randint(0,1) #The program creates a random number that represents the state of if a letter is a capital and stores it in a variable called "isCapital".
             
-            if randomNumber == 0: #If the random number is 0,
-                randomStuff = str(0) #The random character is 0 as a string.
-            elif randomNumber == 1: #If the random number is 1,
-                randomStuff = str(1) #The random character is 1 as a string.
-            elif randomNumber == 2: #If the random number is 2,
-                randomStuff = str(2) #The random character is 2 as a string.
-            elif randomNumber == 3: #If the random number is 3,
-                randomStuff = str(3) #The random character is 3 as a string.
-            elif randomNumber == 4: #If the random number is 4,
-                randomStuff = str(4) #The random character is 4 as a string.
-            elif randomNumber == 5: #If the random number is 5,
-                randomStuff = str(5) #The random character is 5 as a string.
-            elif randomNumber == 6: #If the random number is 6,
-                randomStuff = str(6) #The random character is 6 as a string.
-            elif randomNumber == 7: #If the random number is 7,
-                randomStuff = str(7) #The random character is 7 as a string.
-            elif randomNumber == 8: #If the random number is 8,
-                randomStuff = str(8) #The random character is 8 as a string.
-            elif randomNumber == 9: #If the random number is 9,
-                randomStuff = str(9) #The random character is 9 as a string.
-            elif randomNumber == 10: #If the random number is 10,
-                randomStuff = "a" #The random character is "a".
-            elif randomNumber == 11: #If the random number is 11,
-                randomStuff = "b" #The random character is "b".
-            elif randomNumber == 12: #If the random number is 12,
-                randomStuff = "c" #The random character is "c".
-            elif randomNumber == 13: #If the random number is 13,
-                randomStuff = "d" #The random character is "d".
-            elif randomNumber == 14: #If the random number is 14,
-                randomStuff = "e" #The random character is "e".
-            elif randomNumber == 15: #If the random number is 15,
-                randomStuff = "f" #The random character is "f".
-            elif randomNumber == 16: #If the random number is 16,
-                randomStuff = "g" #The random character is "g".
-            elif randomNumber == 17: #If the random number is 17,
-                randomStuff = "h" #The random character is "h".
-            elif randomNumber == 18: #If the random number is 18,
-                randomStuff = "i" #The random character is "i".
-            elif randomNumber == 19: #If the random number is 19,
-                randomStuff = "j" #The random character is "j".
-            elif randomNumber == 20: #If the random number is 20,
-                randomStuff = "k" #The random character is "k".
-            elif randomNumber == 21: #If the random number is 21,
-                randomStuff = "l" #The random character is "l".
-            elif randomNumber == 22: #If the random number is 22,
-                randomStuff = "m" #The random character is "m".
-            elif randomNumber == 23: #If the random number is 23,
-                randomStuff = "n" #The random character is "n".
-            elif randomNumber == 24: #If the random number is 24,
-                randomStuff = "o" #The random character is "o".
-            elif randomNumber == 25: #If the random number is 25,
-                randomStuff = "p" #The random character is "p".
-            elif randomNumber == 26: #If the random number is 26,
-                randomStuff = "q" #The random character is "q".
-            elif randomNumber == 27: #If the random number is 27,
-                randomStuff = "r" #The random character is "r".
-            elif randomNumber == 28: #If the random number is 28,
-                randomStuff = "s" #The random character is "s".
-            elif randomNumber == 29: #If the random number is 29,
-                randomStuff = "t" #The random character is "t".
-            elif randomNumber == 30: #If the random number is 30,
-                randomStuff = "u" #The random character is "u".
-            elif randomNumber == 31: #If the random number is 31,
-                randomStuff = "v" #The random character is "v".
-            elif randomNumber == 32: #If the random number is 32,
-                randomStuff = "w" #The random character is "w".
-            elif randomNumber == 33: #If the random number is 33,
-                randomStuff = "x" #The random character is "z".
-            elif randomNumber == 34: #If the random number is 34,
-                randomStuff = "y" #The random character is "y".
-            elif randomNumber == 35: #If the random number is 35,
-                randomStuff = "z" #The random character is "z".
-            isCapital = random.randint(0,1) #The program creates a random number that represents the state of if a letter is a capital and stores it in a variable called "isCapital".
-            
-            if str(randomNumber) in "10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35".split() and isCapital == 1: #If the random number is 10-35(which means the character is a letter, and not another type of character), and the random number that represents the state of when a letter is capital is 1,
-                randomStuff = randomStuff.upper() #Make the current random character uppercase.
-            randomCode.append(randomStuff) #Append the character to a list.
-        newCode = "" #Another variable.
-        newCode = newCode.join(randomCode) #Add everything in the list of characters to this variable, newCode.
-        print(newcode)
-        saveFileName = newcode + ".txt"
-        saveFile = open(saveFileName, "w")
-    elif newOldSave in "old use".split():
-        print("What file do you want to use? (No .txt)")
-        saveFileToUse = str(input() + ".txt")
-        saveFile = open()
+    if str(randomNumber) in "10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35".split() and isCapital == 1: #If the random number is 10-35(which means the character is a letter, and not another type of character), and the random number that represents the state of when a letter is capital is 1,
+        randomStuff = randomStuff.upper() #Make the current random character uppercase.
+        randomCode.append(randomStuff) #Append the character to a list.
+newOldSaveTrue = False
+newCode = "" #Another variable.
+newCode = newCode.join(randomCode) #Add everything in the list of characters to this variable, newCode.
+print(newcode)
+saveFileName = newcode + ".txt"
+saveFile = open(saveFileName, "w")
 
 #We need to set up how many times per second Pygame will update, and how we will tick it.
 print("Setting FPS up...")
@@ -255,9 +242,10 @@ if directionToGoFirst == 1:
     MAINWINDOW.blit(creeper, (640, 300)) #This draws the enemy creeper on the right side of the screen.
     otherX2 = 640 #This is the X position of the creeper.
     otherX1 = -200 #This is the X position of the enemy sniper.
-
+saveFile.close() #Closes the save file.
 #The game loop.
 while True:
+    saveFile = open(saveFileName, "w")
     pygame.mouse.set_visible(False) #This makes the cursor invisible, so we can use an image as a cursor.
     
     for event in pygame.event.get(): #looks for events.
@@ -324,12 +312,15 @@ while True:
         
         elif doneforever == 2: #If the doneforever variable is 2,
             mouseY = int(x) #store the Y position in a variable.
-    
+    saveFile.write("Mouse Position: " + str(mouseX) + ", " + str(mouseY) + "\n")
     globalDirection += 5 #This sets the direction of the particles.
+    saveFile.write("Particle Direction: " + str(globalDirection))
     rmlg = pygame.transform.rotate(mlg, globalDirection) #The rotated version of this particle is stored in another "variable".
     rmachinima = pygame.transform.rotate(machinima, globalDirection) #The rotated version of this particle is stored in another "variable".
     rhacker1 = pygame.transform.rotate(hacker1, globalDirection) #The rotated version of this particle is stored in another "variable".
     rhacker2 = pygame.transform.rotate(hacker2, globalDirection) #The rotated version of this particle is stored in another "variable".
+    
+    saveFile.write("Mouse Click Areas: " + str(pygame.mouse.get_pressed()))
     
     if pygame.mouse.get_pressed() == (False, False, True): #If the right mouse button is clicked, and the others aren't,
         gunshot.play() #Play a laser gun sound.
@@ -360,6 +351,8 @@ while True:
             hitCreeperTime = 60
         particle = random.randint(1,4) #Sets what particle to use/render.
     
+    saveFile.write("Creeper State: " str(hitCreeper))
+    
     if hitSniper == True: #If the sniper got hit,
         hitSniperTime -= 1 #Remove 1 tick from this variable until time runs out. Time is used to render particles.
         if hitSniperTime == 0: #If time runs out(at 0),
@@ -369,6 +362,8 @@ while True:
     else:
         hitSniperTime = 60 #Reset the time to 60 ticks/1 second to make sure time goes correctly.
         otherKilled = False #Unknown purpose.
+    
+    saveFile.write("Sniper State: " str(hitSniper))
     
     if onePlay == True: #When the game wants to play a sound because of a Creeper being hit,
         current1play = random.randint(1,3) #Get a random number.
@@ -430,32 +425,42 @@ while True:
     if hitCreeper == True: #If the Creeper got hit, 
         if particle == 1: #If the random number was 1, 
             MAINWINDOW.blit(rmlg, (hitCreeperX, 350)) #We draw the MLG logo.
+            saveFile.write("Creeper Particles: MLG Logo")
         elif particle == 2: #If the random number was 2,
             MAINWINDOW.blit(rmachinima, (hitCreeperX, 350)) #We draw the Machinima logo.
+            saveFile.write("Creeper Particles: Machinima Logo")
         elif particle == 3: #If the random number was 3,
             MAINWINDOW.blit(rhacker1, (hitCreeperX, 350)) #We draw a version of the text, "U HACKER".
+            saveFile.write("Creeper Particles: \"U HACKER\"(Black)")
         elif particle == 4: #If the random number was 4, 
             MAINWINDOW.blit(rhacker2, (hitCreeperX, 350)) #We draw another version of the text, "U HACKER".
+            saveFile.write("Creeper Particles: \"U HACKER\"(Colored)")
     
     if hitSniper == True: #If the enemy sniper got hit,
         if particle == 1: #If the random number was 1, 
             MAINWINDOW.blit(rmlg, (hitSniperX, 300)) #We draw the MLG logo.
+            saveFile.write("Sniper Particles: MLG Logo")
         elif particle == 2: #If the random number was 2, 
             MAINWINDOW.blit(rmachinima, (hitSniperX, 300)) #We draw the Macinima logo.
+            saveFile.write("Sniper Particles: Machinima Logo")
         elif particle == 3:#If the random number was 3, 
             MAINWINDOW.blit(rhacker1, (hitSniperX, 300)) #We draw a version of the text, "U HACKER".
+            saveFile.write("Sniper Particles: \"U HACKER\"(Black)")
         elif particle == 4: #If the random number was 4, 
             MAINWINDOW.blit(rhacker2, (hitSniperX, 300)) #We draw another version of the text, "U HACKER".
+            saveFile.write("Sniper Particles: \"U HACKER\"(Colored)")
     
     #Cursor/Scores/similar
     MAINWINDOW.blit(logo, (540, 380)) #Draw the logo of the main developer.
     MAINWINDOW.blit(cursorImage, (mouseX, mouseY)) #Draw the "cursor" at the mouse position.
     
     scoretext = "Score: " + str(score) #Define what the text for the score is.
+    saveFile.write(scoretext)
     textscore = RegFont.render(scoretext, 1, ORANGE) #Define the actual text to draw.
     MAINWINDOW.blit(textscore, (0, 0)) #Draw the text on the screen.
     
     if rekt == True: #If an enemy approached the character,
+        saveFile.write("GAME OVER")
         if endPlayOne == True: #If we haven't play the sound yet.
             endSound.play() #Play the end sound.
             endPlayOne = False #Set the variable to false to make sure the sound doesn't play multiple times/sound peculiar.
@@ -475,6 +480,9 @@ while True:
     
     #The game updates.
     pygame.display.update()
+    
+    #The save file closes to update.
+    saveFile.close()
     
     #We wait.
     fpsClock.tick(FPS)
