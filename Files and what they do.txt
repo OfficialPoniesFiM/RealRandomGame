@@ -1,9 +1,9 @@
 Sound files:
-comeon.ogg - Rage "Come on"
-kiddingme.ogg - Rage "Are you kidding me?"
-what.ogg - Rage "what?"
+momgetthecamera1.ogg - Reaction "MOM GET THE CAMERA"
+ohmygod.ogg - Reaction "OH MY GOD"
+wombocombo1.ogg - Reaction - really good
 end.ogg - End sound when enemy approaches
-lasergun.ogg - Gun sound.
+50Cal.ogg - Gunshot sound.
 
 Images:
 creeper.png - Enemy creeper
@@ -13,6 +13,7 @@ hacker2.png - Another version of the particle that says, "U HACKER"
 machinima.png - A particle with the Machinima logo.
 mlg.jpg - A particle with the MLG logo.
 sniper.png - The main character, and the enemy sniper.
+poniesfimlogo.png - PoniesFiM's logo.
 
 Other things:
 main.py - Program that runs the game. Has over 300 lines.
