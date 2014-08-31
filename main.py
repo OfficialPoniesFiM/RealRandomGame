@@ -150,13 +150,13 @@ print("Finished loading those things!")
 print("Loading the sounds...")
 #The sounds
 #Rage
-kiddingMe = pygame.mixer.Sound('Sounds\\kiddingme.ogg') #A rage sound that plays when an enemy is killed.
-comeOn = pygame.mixer.Sound('Sounds\\comeon.ogg') #A rage sound that plays when an enemy is killed.
-what = pygame.mixer.Sound('Sounds\\what.ogg') #A rage sound that plays when an enemy is killed.
+kiddingMe = pygame.mixer.Sound('Sounds\\wombocombo1.ogg') #A rage sound that plays when an enemy is killed.
+comeOn = pygame.mixer.Sound('Sounds\\momgetthecamera1.ogg') #A rage sound that plays when an enemy is killed.
+what = pygame.mixer.Sound('Sounds\\ohmygod.ogg') #A rage sound that plays when an enemy is killed.
 
 #Extras.
 endSound = pygame.mixer.Sound('Sounds\\end.ogg') #The end sound when an enemy approaches you.
-gunshot = pygame.mixer.Sound('Sounds\\lasergun.wav') #The sound the plays when you click the mouse(shoot a gun).
+gunshot = pygame.mixer.Sound('Sounds\\50Cal.wav') #The sound the plays when you click the mouse(shoot a gun).
 weed = pygame.mixer.Sound("Sounds\\weed.ogg") #Extra sound that plays when kill.
 tripleKill = pygame.mixer.Sound("Sounds\\triplekill.ogg")  #Extra sound that plays when kill.
 toasty = pygame.mixer.Sound("Sounds\\toasty.ogg") #Extra sound that plays when kill.
@@ -226,7 +226,7 @@ characterXRight = False #This is the variable that represents the state of when 
 hitCreeper = False #This is the variable that represents the state of when the Creeper is shot.
 hitCreeperTime = 480 #This is the variable that represents the time of when the particle appears. 1 equals one tick. The game refreshes 60 times a second, so 60 ticks should be equal to 1 second.
 hitSniper = False #This is the variable that represents the state of when the Sniper is shot.
-hitSniperTime = 60 #This is the variable that represents the time of when the particle appears. 1 equals one tick. The game refreshes 60 times a second, so 60 ticks should be equal to 1 second.
+hitSniperTime = 120 #This is the variable that represents the time of when the particle appears. 1 equals one tick. The game refreshes 60 times a second, so 60 ticks should be equal to 1 second.
 score = 0 #This is the variable that holds the score.
 globalDirection = 90 #This is the variable that holds the direction of the particles.
 otherKilled = False #Unknown purpose.
@@ -344,11 +344,11 @@ while whiles:
         hitCreeperTime -= 1 #Makes game remove ticks until goes to 0.
         if hitCreeperTime == 0: #If we ran out of time,
             hitCreeper = False #Set it to False for other things, such as to move.
-            hitCreeperTime = 60 #Time gets reset to 60 ticks/1 second.
+            hitCreeperTime = 120 #Time gets reset to 60 ticks/1 second.
     
     else:
         if otherKilled == False: #If otherKilled(unknown purpose) is False, set hitCreeperTime to 60.
-            hitCreeperTime = 60
+            hitCreeperTime = 120
         particle = random.randint(1,4) #Sets what particle to use/render.
     
     saveFile.write("Creeper State: " + str(hitCreeper) + "\n")
@@ -357,10 +357,10 @@ while whiles:
         hitSniperTime -= 1 #Remove 1 tick from this variable until time runs out. Time is used to render particles.
         if hitSniperTime == 0: #If time runs out(at 0),
             hitSniper = False #Set hitSniper to False, to let the enemy sniper move, and to stop rendering the particle.
-            hitSniperTime = 60 #Reset the time for later.
+            hitSniperTime = 120 #Reset the time for later.
             otherKilled = False #Unknown purpose.
     else:
-        hitSniperTime = 60 #Reset the time to 60 ticks/1 second to make sure time goes correctly.
+        hitSniperTime = 120 #Reset the time to 60 ticks/1 second to make sure time goes correctly.
         otherKilled = False #Unknown purpose.
     
     saveFile.write("Sniper State: " + str(hitSniper) + "\n")
