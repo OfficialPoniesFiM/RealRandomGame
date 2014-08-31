@@ -2,7 +2,7 @@ Sound files:
 momgetthecamera1.ogg - Reaction "MOM GET THE CAMERA"
 ohmygod.ogg - Reaction "OH MY GOD"
 wombocombo1.ogg - Reaction - really good
-end.ogg - End sound when enemy approaches
+end.ogg - End sound when enemy approaches - song: I SEE MONSTAS - Holdin On(Skrillex and Nero remix)
 50Cal.ogg - Gunshot sound.
 
 Images:
