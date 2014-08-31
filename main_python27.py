@@ -182,7 +182,7 @@ print "Set up the window!"
 
 #We now have to make a caption for the window. (The title basically)
 print "Setting up a caption..."
-pygame.display.set_caption("RandomGame 1.0 - Main Window") #This is the title of the window we use.
+pygame.display.set_caption("RandomGame 1.5") #This is the title of the window we use.
 print "Set up the caption!"
 
 #We now have to make colors with variables. Typing BLACK or WHITE is easier and simpler than typing (0, 0, 0) or (255, 255, 255).
