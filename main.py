@@ -114,12 +114,6 @@ print(newCode)
 saveFileName = "Saves\\" + newCode + ".txt"
 saveFile = open(saveFileName, "w")
 
-#We need to set up how many times per second Pygame will update, and how we will tick it.
-print("Setting FPS up...")
-FPS = 60 #The number of how many times Pygame will refresh each second.
-fpsClock = pygame.time.Clock() #The way we will delay things.
-print("Set up!")
-
 #We now need to initialize Pygame and do other things.
 print("Initializing PyGame...")
 pygame.mixer.pre_init(44100, -16, 2, 2048) #Before we initialize, we need to set up how the sounds will be played.
@@ -224,9 +218,9 @@ MAINWINDOW.blit(mainSniper, (characterX, characterY)) #We have to initially draw
 characterXLeft = False #This is the variable that represents the state of when the character is going left. 
 characterXRight = False #This is the variable that represents the state of when the character is going right.
 hitCreeper = False #This is the variable that represents the state of when the Creeper is shot.
-hitCreeperTime = 480 #This is the variable that represents the time of when the particle appears. 1 equals one tick. The game refreshes 60 times a second, so 60 ticks should be equal to 1 second.
+hitCreeperTime = 30 #This is the variable that represents the time of when the particle appears. 1 equals one tick. The game refreshes 1000 times a second, so 1000 ticks should be equal to 1 second.
 hitSniper = False #This is the variable that represents the state of when the Sniper is shot.
-hitSniperTime = 120 #This is the variable that represents the time of when the particle appears. 1 equals one tick. The game refreshes 60 times a second, so 60 ticks should be equal to 1 second.
+hitSniperTime = 8 #This is the variable that represents the time of when the particle appears. 1 equals one tick. The game refreshes 1000 times a second, so 1000 ticks should be equal to 1 second.
 score = 0 #This is the variable that holds the score.
 globalDirection = 90 #This is the variable that holds the direction of the particles.
 otherKilled = False #Unknown purpose.
@@ -234,7 +228,7 @@ onePlay = False #This represents the state of the sound that gets played when th
 twoPlay = False #This represents the state of the sound that gets played when the enemy Sniper is hit. When the enemy Sniper gets hit, this is set to true, so the sound will play. This variable is set to False after a sound plays to make sure that it plays once.
 rekt = False #This represents the state of when the enemy approaches the character.
 endPlayOne = True #This represents the state of when the end sound plays. If rekt = True, then the sounds will play and rekt will be set to False just to make sure the end sound plays one time.
-waitTillEnd = 480 #This is how much time the game has until exiting if the enemy approaches the main character. This variable lowers itself every refresh. The game refreshes 60 times a second, so 480 ticks = 4 seconds.
+waitTillEnd = 4000 #This is how much time the game has until exiting if the enemy approaches the main character. This variable lowers itself every refresh. The game refreshes 1000 times a second, so 4000 ticks = 4 seconds.
 
 #This initially draws the enemies.
 if directionToGoFirst == 1:
@@ -245,6 +239,8 @@ if directionToGoFirst == 1:
 saveFile.close() #Closes the save file.
 #The game loop.
 whiles = True
+currentFrameTime = 1
+pygame.time.Clock.tick()
 while whiles:
     saveFile = open(saveFileName, "w")
     pygame.mouse.set_visible(False) #This makes the cursor invisible, so we can use an image as a cursor.
@@ -279,16 +275,16 @@ while whiles:
     #We have to update the character parameters to move the thing at all properly.
     if directionToGoFirst == 1: #Mostly useless.
         if hitSniper == False: #This checks if the enemy Sniper isn't hit.
-            otherX1 += 2.5 #The enemy sniper goes to the left by adding 2.5 to its X position. Only happens when not hit.
+            otherX1 += .15 * currentFrameTime #The enemy sniper goes to the left by adding .15 * milliseconds from last frame to its X position. Only happens when not hit.
         
         if hitCreeper == False: #This checks if the Creeper isn't hit.
-            otherX2 -= 2.5 #The Creeper goes to the right by removing 2.5 from its X position. Only happens when not hit.
+            otherX2 -= .15 * currentFrameTime #The Creeper goes to the right by removing .15 * milliseconds from last frame from its X position. Only happens when not hit.
     
     if characterXLeft == characterXRight: #If the player isn't pressing the left(or A), or right(or D) keys, or pressing both at the same time.
         filler = 0 #Nothing really happens. Just a filler variable set to make sure nothing wrong happens.
     
     elif characterXLeft == True: #If the character is moving left,
-        characterX -= 2.5 #2.5 is removed from its X position to move left.
+        characterX -= .15 * currentFrameTime #.15 * currentFrameTime is removed from its X position to move left.
         if characterX > 440: #Makes sure sniper doesn't get out of the window.
             characterX = 440 #Sets the character X position to 440 if the X position is too much, to make sure the character doesn't get out of the window.
         
@@ -296,7 +292,7 @@ while whiles:
             characterX = 0 #Sets the character X position to 0 if the X position is too little, to make sure the character doesn't get out of the window.
     
     elif characterXRight == True: #If the character is moving right,
-        characterX += 2.5 #2.5 is added to its X position to move right.
+        characterX += .15 * currentFrameTime #.15 * milliseconds from last frame is added to its X position to move right.
         
         if characterX > 440: #Makes sure sniper doesn't get out of the window.
             characterX = 440 #Sets the character X position to 440 if the X position is too much, to make sure the character doesn't get out of the window.
@@ -483,7 +479,8 @@ while whiles:
     #The save file closes to update.
     saveFile.close()
     
-    #We wait.
-    fpsClock.tick(FPS)
-pygame.quit() #Pygame quits.
-sys.exit() #Sys exits.
+	#We find how much milliseconds the last frame has taken, so we can apply it to frame-dependent variables.
+	currentFrameTime = pygame.time.Clock.tick()
+	
+pygame.quit() # Pygame quits.
+sys.exit() # Sys exits.
