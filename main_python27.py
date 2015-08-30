@@ -479,8 +479,7 @@ while whiles:
     #The save file closes to update.
     saveFile.close()
     
-	#We find how much milliseconds the last frame has taken, so we can apply it to frame-dependent variables.
-	currentFrameTime = pygame.time.Clock.tick()
-	
+    #We find how much milliseconds the last frame has taken, so we can apply it to frame-dependent variables.
+    currentFrameTime = pygame.time.Clock.tick()
 pygame.quit() # Pygame quits.
 sys.exit() # Sys exits.
