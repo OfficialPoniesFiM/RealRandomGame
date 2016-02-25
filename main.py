@@ -126,7 +126,9 @@ MAINWINDOW.blit(mainSniper, (characterX, characterY)) #We have to initially draw
 
 #We have to initially set variables for the game loop. If this is done in the game loop, there would be many problems.
 characterXLeft = False #This is the variable that represents the state of when the character is going left. 
+leftSpeed = 0.0 #This is the variable that represents the speed of the character going left.
 characterXRight = False #This is the variable that represents the state of when the character is going right.
+rightSpeed = 0.0 #This is the variable that represents the speed of the character going right.
 
 hitCreeper = False #This is the variable that represents the state of when the Creeper is shot.
 hitCreeperTime = 30 #This is the variable that represents the time of when the particle appears. 1 equals one tick. The game refreshes 1000 times a second, so 1000 ticks should be equal to 1 second.
@@ -196,23 +198,41 @@ while whiles:
     
     if characterXLeft == characterXRight: #If the player isn't pressing the left(or A), or right(or D) keys, or pressing both at the same time.
         filler = 0 #Nothing really happens. Just a filler variable set to make sure nothing wrong happens.
+        
+        if leftSpeed > 0: #If no one is moving, then slow down both sides.
+            leftSpeed -= .05
+        
+        if rightSpeed > 0:
+            rightSpeed -= .05
     
     elif characterXLeft == True: #If the character is moving left,
-        characterX -= .25 * currentFrameTime #.15 * currentFrameTime is removed from its X position to move left.
+        characterX -= leftSpeed * currentFrameTime #.15 * currentFrameTime is removed from its X position to move left.
         if characterX > 440: #Makes sure sniper doesn't get out of the window.
             characterX = 440 #Sets the character X position to 440 if the X position is too much, to make sure the character doesn't get out of the window.
         
         elif characterX < 0: #Makes sure sniper doesn't get out of the window.
             characterX = 0 #Sets the character X position to 0 if the X position is too little, to make sure the character doesn't get out of the window.
+        
+        if leftSpeed < .50: #If you're going left, increase leftSpeed while slowing rightSpeed.
+            leftSpeed += .05
+        
+        if rightSpeed > 0:
+            rightSpeed -= .05
     
     elif characterXRight == True: #If the character is moving right,
-        characterX += .25 * currentFrameTime #.15 * milliseconds from last frame is added to its X position to move right.
+        characterX += rightSpeed * currentFrameTime #.15 * milliseconds from last frame is added to its X position to move right.
         
         if characterX > 440: #Makes sure sniper doesn't get out of the window.
             characterX = 440 #Sets the character X position to 440 if the X position is too much, to make sure the character doesn't get out of the window.
         
         elif characterX < 0: #Makes sure sniper doesn't get out of the window.
             characterX = 0 #Sets the character X position to 0 if the X position is too little, to make sure the character doesn't get out of the window.
+        
+        if rightSpeed < .50: #If you're going left, increase rightSpeed while slowing leftSpeed.
+            rightSpeed += .05
+        
+        if leftSpeed > 0:
+            leftSpeed -= .05
     
     doneforever = 1 #This variable is used to make sure the mouse X and mouse Y get captured properly.
     for x in pygame.mouse.get_pos(): #pygame.mouse.get_pos() returns a tuple with the X and Y position, so we have to get each individual part properly.
