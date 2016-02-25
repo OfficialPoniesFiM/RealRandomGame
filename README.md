@@ -2,7 +2,7 @@ RealRandomGame
 ==============
 
 Requirements:
-Python 3.2 or 2.7, and Pygame 1.9.2.
+Python 3 and Pygame 1.9.2+.
 
 A simple, stupid game created as a project for school to teach people about Python programming.
 
