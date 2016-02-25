@@ -175,11 +175,11 @@ while whiles:
         if event.type == pygame.KEYDOWN: #Checks when someone is pressing a key.
             if event.key == pygame.K_a or event.key == pygame.K_LEFT: #Checks when someone is pressing the A/left key.
                 characterXLeft = True #This variable is set to True, so the main character can move to the left.
-                print("Character now at " + str(characterX) + ", " + str(characterY))
+                #print("Character now at " + str(characterX) + ", " + str(characterY))
             
             if event.key == pygame.K_d or event.key == pygame.K_RIGHT: #Checks when someone is pressing the D/right key.
                 characterXRight = True #This variable is set to True, so the main character can move to the right.
-                print("Character now at " + str(characterX) + ", " + str(characterY))
+                #print("Character now at " + str(characterX) + ", " + str(characterY))
         
         if event.type == pygame.KEYUP: #Checks when someone stopped pressing the A/left key.
             if event.key == pygame.K_a or event.key == pygame.K_LEFT: #Checks when someone stopped pressing the A/left key.
