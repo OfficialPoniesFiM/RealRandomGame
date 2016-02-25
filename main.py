@@ -144,13 +144,12 @@ if directionToGoFirst == 1:
     MAINWINDOW.blit(creeper, (640, 300)) #This draws the enemy creeper on the right side of the screen.
     otherX2 = 640 #This is the X position of the creeper.
     otherX1 = -200 #This is the X position of the enemy sniper.
-saveFile.close() #Closes the save file.
+
 #The game loop.
 whiles = True
 currentFrameTime = 1
 pygame.time.Clock.tick()
 while whiles:
-    saveFile = open(saveFileName, "w")
     pygame.mouse.set_visible(False) #This makes the cursor invisible, so we can use an image as a cursor.
     
     for event in pygame.event.get(): #looks for events.
@@ -216,15 +215,11 @@ while whiles:
         
         elif doneforever == 2: #If the doneforever variable is 2,
             mouseY = int(x) #store the Y position in a variable.
-    saveFile.write("Mouse Position: " + str(mouseX) + ", " + str(mouseY) + "\n")
     globalDirection += 5 #This sets the direction of the particles.
-    saveFile.write("Particle Direction: " + str(globalDirection) + "\n")
     rmlg = pygame.transform.rotate(mlg, globalDirection) #The rotated version of this particle is stored in another "variable".
     rmachinima = pygame.transform.rotate(machinima, globalDirection) #The rotated version of this particle is stored in another "variable".
     rhacker1 = pygame.transform.rotate(hacker1, globalDirection) #The rotated version of this particle is stored in another "variable".
     rhacker2 = pygame.transform.rotate(hacker2, globalDirection) #The rotated version of this particle is stored in another "variable".
-    
-    saveFile.write("Mouse Click Areas: " + str(pygame.mouse.get_pressed()) + "\n")
     
     if pygame.mouse.get_pressed() == (False, False, True): #If the right mouse button is clicked, and the others aren't,
         gunshot.play() #Play a laser gun sound.
@@ -255,8 +250,6 @@ while whiles:
             hitCreeperTime = 120
         particle = random.randint(1,4) #Sets what particle to use/render.
     
-    saveFile.write("Creeper State: " + str(hitCreeper) + "\n")
-    
     if hitSniper == True: #If the sniper got hit,
         hitSniperTime -= 1 #Remove 1 tick from this variable until time runs out. Time is used to render particles.
         if hitSniperTime == 0: #If time runs out(at 0),
@@ -266,8 +259,6 @@ while whiles:
     else:
         hitSniperTime = 120 #Reset the time to 60 ticks/1 second to make sure time goes correctly.
         otherKilled = False #Unknown purpose.
-    
-    saveFile.write("Sniper State: " + str(hitSniper) + "\n")
     
     if onePlay == True: #When the game wants to play a sound because of a Creeper being hit,
         current1play = random.randint(1,3) #Get a random number.
@@ -329,42 +320,32 @@ while whiles:
     if hitCreeper == True: #If the Creeper got hit, 
         if particle == 1: #If the random number was 1, 
             MAINWINDOW.blit(rmlg, (hitCreeperX, 350)) #We draw the MLG logo.
-            saveFile.write("Creeper Particles: MLG Logo\n")
         elif particle == 2: #If the random number was 2,
             MAINWINDOW.blit(rmachinima, (hitCreeperX, 350)) #We draw the Machinima logo.
-            saveFile.write("Creeper Particles: Machinima Logo\n")
         elif particle == 3: #If the random number was 3,
             MAINWINDOW.blit(rhacker1, (hitCreeperX, 350)) #We draw a version of the text, "U HACKER".
-            saveFile.write("Creeper Particles: \"U HACKER\"(Black)\n")
         elif particle == 4: #If the random number was 4, 
             MAINWINDOW.blit(rhacker2, (hitCreeperX, 350)) #We draw another version of the text, "U HACKER".
-            saveFile.write("Creeper Particles: \"U HACKER\"(Colored)\n")
     
     if hitSniper == True: #If the enemy sniper got hit,
         if particle == 1: #If the random number was 1, 
             MAINWINDOW.blit(rmlg, (hitSniperX, 300)) #We draw the MLG logo.
-            saveFile.write("Sniper Particles: MLG Logo\n")
         elif particle == 2: #If the random number was 2, 
             MAINWINDOW.blit(rmachinima, (hitSniperX, 300)) #We draw the Macinima logo.
-            saveFile.write("Sniper Particles: Machinima Logo\n")
         elif particle == 3:#If the random number was 3, 
             MAINWINDOW.blit(rhacker1, (hitSniperX, 300)) #We draw a version of the text, "U HACKER".
-            saveFile.write("Sniper Particles: \"U HACKER\"(Black)\n")
         elif particle == 4: #If the random number was 4, 
             MAINWINDOW.blit(rhacker2, (hitSniperX, 300)) #We draw another version of the text, "U HACKER".
-            saveFile.write("Sniper Particles: \"U HACKER\"(Colored)\n")
     
     #Cursor/Scores/similar
     MAINWINDOW.blit(logo, (540, 380)) #Draw the logo of the main developer.
     MAINWINDOW.blit(cursorImage, (mouseX, mouseY)) #Draw the "cursor" at the mouse position.
     
     scoretext = "Score: " + str(score) #Define what the text for the score is.
-    saveFile.write(scoretext + "\n")
     textscore = RegFont.render(scoretext, 1, ORANGE) #Define the actual text to draw.
     MAINWINDOW.blit(textscore, (0, 0)) #Draw the text on the screen.
     
     if rekt == True: #If an enemy approached the character,
-        saveFile.write("GAME OVER")
         if endPlayOne == True: #If we haven't play the sound yet.
             endSound.play() #Play the end sound.
             endPlayOne = False #Set the variable to false to make sure the sound doesn't play multiple times/sound peculiar.
@@ -383,9 +364,6 @@ while whiles:
     
     #The game updates.
     pygame.display.update()
-    
-    #The save file closes to update.
-    saveFile.close()
     
     #We find how much milliseconds the last frame has taken, so we can apply it to frame-dependent variables.
     currentFrameTime = pygame.time.Clock.tick()
