@@ -32,21 +32,21 @@ print("Initialized!")
 print("Now loading the main characters, the enemies, the particles, and other stuff.")
 
 #The images.
-mainSniper = pygame.image.load("Pictures\\sniper.png") #Main character(you play this).
+mainSniper = pygame.image.load("Pictures/sniper.png") #Main character(you play this).
 
 #Enemies.
-otherSniper = pygame.image.load("Pictures\\sniper.png") #The other sniper.
-creeper = pygame.image.load("Pictures\\creeper.png") #The creeper.
+otherSniper = pygame.image.load("Pictures/sniper.png") #The other sniper.
+creeper = pygame.image.load("Pictures/creeper.png") #The creeper.
 
 #Particles.
-mlg = pygame.image.load("Pictures\\mlg.jpg") #A particle.
-machinima = pygame.image.load("Pictures\\machinima.png") #A particle.
-hacker1 = pygame.image.load("Pictures\\hacker.png") #A particle.
-hacker2 = pygame.image.load("Pictures\\hacker2.png") #A particle.
+mlg = pygame.image.load("Pictures/mlg.jpg") #A particle.
+machinima = pygame.image.load("Pictures/machinima.png") #A particle.
+hacker1 = pygame.image.load("Pictures/hacker.png") #A particle.
+hacker2 = pygame.image.load("Pictures/hacker2.png") #A particle.
 
 #Other stuff.
-cursorImage = pygame.image.load("Pictures\\cursor.png") #We use this as a our "cursor".
-logo = pygame.image.load("Pictures\\poniesfimlogo.png") #The logo of the main developer.
+cursorImage = pygame.image.load("Pictures/cursor.png") #We use this as a our "cursor".
+logo = pygame.image.load("Pictures/poniesfimlogo.png") #The logo of the main developer.
 print("Finished loading those things!")
 
 #We have some sounds we need to get.
@@ -54,16 +54,16 @@ print("Loading the sounds...")
 
 #The sounds
 #Rage
-kiddingMe = pygame.mixer.Sound('Sounds\\wombocombo1.ogg') #A rage sound that plays when an enemy is killed.
-comeOn = pygame.mixer.Sound('Sounds\\momgetthecamera1.ogg') #A rage sound that plays when an enemy is killed.
-what = pygame.mixer.Sound('Sounds\\ohmygod.ogg') #A rage sound that plays when an enemy is killed.
+kiddingMe = pygame.mixer.Sound('Sounds/wombocombo1.ogg') #A rage sound that plays when an enemy is killed.
+comeOn = pygame.mixer.Sound('Sounds/momgetthecamera1.ogg') #A rage sound that plays when an enemy is killed.
+what = pygame.mixer.Sound('Sounds/ohmygod.ogg') #A rage sound that plays when an enemy is killed.
 
 #Extras.
-endSound = pygame.mixer.Sound('Sounds\\end.ogg') #The end sound when an enemy approaches you.
-gunshot = pygame.mixer.Sound('Sounds\\50Cal.wav') #The sound the plays when you click the mouse(shoot a gun).
-weed = pygame.mixer.Sound("Sounds\\weed.ogg") #Extra sound that plays when kill.
-tripleKill = pygame.mixer.Sound("Sounds\\triplekill.ogg")  #Extra sound that plays when kill.
-toasty = pygame.mixer.Sound("Sounds\\toasty.ogg") #Extra sound that plays when kill.
+endSound = pygame.mixer.Sound('Sounds/end.ogg') #The end sound when an enemy approaches you.
+gunshot = pygame.mixer.Sound('Sounds/50Cal.wav') #The sound the plays when you click the mouse(shoot a gun).
+weed = pygame.mixer.Sound("Sounds/weed.ogg") #Extra sound that plays when kill.
+tripleKill = pygame.mixer.Sound("Sounds/triplekill.ogg")  #Extra sound that plays when kill.
+toasty = pygame.mixer.Sound("Sounds/toasty.ogg") #Extra sound that plays when kill.
 print("Finished loading the sounds...")
 
 #We now have some fonts to prepare.
