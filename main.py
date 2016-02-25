@@ -153,7 +153,7 @@ if directionToGoFirst == 1:
 #The game loop setup.
 whiles = True
 currentFrameTime = 1
-pygame.time.Clock.tick()
+#pygame.time.Clock.tick()
 
 #The actual game loop.
 while whiles:
@@ -198,7 +198,7 @@ while whiles:
         filler = 0 #Nothing really happens. Just a filler variable set to make sure nothing wrong happens.
     
     elif characterXLeft == True: #If the character is moving left,
-        characterX -= .15 * currentFrameTime #.15 * currentFrameTime is removed from its X position to move left.
+        characterX -= .25 * currentFrameTime #.15 * currentFrameTime is removed from its X position to move left.
         if characterX > 440: #Makes sure sniper doesn't get out of the window.
             characterX = 440 #Sets the character X position to 440 if the X position is too much, to make sure the character doesn't get out of the window.
         
@@ -206,7 +206,7 @@ while whiles:
             characterX = 0 #Sets the character X position to 0 if the X position is too little, to make sure the character doesn't get out of the window.
     
     elif characterXRight == True: #If the character is moving right,
-        characterX += .15 * currentFrameTime #.15 * milliseconds from last frame is added to its X position to move right.
+        characterX += .25 * currentFrameTime #.15 * milliseconds from last frame is added to its X position to move right.
         
         if characterX > 440: #Makes sure sniper doesn't get out of the window.
             characterX = 440 #Sets the character X position to 440 if the X position is too much, to make sure the character doesn't get out of the window.
@@ -380,7 +380,7 @@ while whiles:
     pygame.display.update()
     
     #We find how much milliseconds the last frame has taken, so we can apply it to frame-dependent variables.
-    currentFrameTime = pygame.time.Clock.tick()
+    #currentFrameTime = pygame.time.Clock.tick()
 
 pygame.quit() # Pygame quits.
 sys.exit() # Sys exits.
