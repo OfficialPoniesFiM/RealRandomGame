@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #This is a simple game. 
-#Copyright (C) 2014 Nathan Guerrero/PoniesFiM
+#Copyright (C) 2016 Nathan Guerrero/PoniesFiM
 """This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
@@ -9,7 +9,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>."""
 
 #We have to print some copyright stuff.
-print("RandomGame Copyright (C) 2014 Nathan Guerrero/PoniesFiM") #First line
+print("RandomGame Copyright (C) 2016 Nathan Guerrero/PoniesFiM") #First line
 print("This program comes with ABSOLUTELY NO WARRANTY; for details go to GPL.txt or README.txt") #Second line
 print("This is free software, and you are welcome to redistribute it") #Third line
 print("under certain conditions.") #Fourth line.
@@ -30,6 +30,7 @@ print("Initialized!")
 
 #We now have to load the images for many of the objects in the game.
 print("Now loading the main characters, the enemies, the particles, and other stuff.")
+
 #The images.
 mainSniper = pygame.image.load("Pictures\\sniper.png") #Main character(you play this).
 
@@ -50,6 +51,7 @@ print("Finished loading those things!")
 
 #We have some sounds we need to get.
 print("Loading the sounds...")
+
 #The sounds
 #Rage
 kiddingMe = pygame.mixer.Sound('Sounds\\wombocombo1.ogg') #A rage sound that plays when an enemy is killed.
@@ -84,7 +86,7 @@ print("Set up the window!")
 
 #We now have to make a caption for the window. (The title basically)
 print("Setting up a caption...")
-pygame.display.set_caption("RandomGame 1.5") #This is the title of the window we use.
+pygame.display.set_caption("RandomGame 1.6") #This is the title of the window we use.
 print("Set up the caption!")
 
 #We now have to make colors with variables. Typing BLACK or WHITE is easier and simpler than typing (0, 0, 0) or (255, 255, 255).
@@ -125,10 +127,13 @@ MAINWINDOW.blit(mainSniper, (characterX, characterY)) #We have to initially draw
 #We have to initially set variables for the game loop. If this is done in the game loop, there would be many problems.
 characterXLeft = False #This is the variable that represents the state of when the character is going left. 
 characterXRight = False #This is the variable that represents the state of when the character is going right.
+
 hitCreeper = False #This is the variable that represents the state of when the Creeper is shot.
 hitCreeperTime = 30 #This is the variable that represents the time of when the particle appears. 1 equals one tick. The game refreshes 1000 times a second, so 1000 ticks should be equal to 1 second.
+
 hitSniper = False #This is the variable that represents the state of when the Sniper is shot.
 hitSniperTime = 8 #This is the variable that represents the time of when the particle appears. 1 equals one tick. The game refreshes 1000 times a second, so 1000 ticks should be equal to 1 second.
+
 score = 0 #This is the variable that holds the score.
 globalDirection = 90 #This is the variable that holds the direction of the particles.
 otherKilled = False #Unknown purpose.
@@ -145,10 +150,12 @@ if directionToGoFirst == 1:
     otherX2 = 640 #This is the X position of the creeper.
     otherX1 = -200 #This is the X position of the enemy sniper.
 
-#The game loop.
+#The game loop setup.
 whiles = True
 currentFrameTime = 1
 pygame.time.Clock.tick()
+
+#The actual game loop.
 while whiles:
     pygame.mouse.set_visible(False) #This makes the cursor invisible, so we can use an image as a cursor.
     
@@ -263,12 +270,14 @@ while whiles:
     if onePlay == True: #When the game wants to play a sound because of a Creeper being hit,
         current1play = random.randint(1,3) #Get a random number.
         current1play2 = random.randint(1,4) #Get another random number.
+        
         if current1play == 1: #If the number is 1,
             kiddingMe.play() #Play this sound.
         elif current1play == 2: #If the number is 2,
             comeOn.play() #Play this sound.
         elif current1play == 3: #If the number is 3,
             what.play() #Play this sound.
+        
         if current1play2 == 1:
             filler = 0 #Unknown purpose.
         elif current1play2 == 2:
@@ -277,6 +286,7 @@ while whiles:
             tripleKill.play() #Play this sound.
         elif current1play2 == 4:
             toasty.play() #Play this sound.
+        
         onePlay = False #Set this variable to false to make sure sounds don't play again until Creeper gets hit again.
     
     if twoPlay == True: #When the game wants to play a sound because of an enemy Sniper being hit,
@@ -288,6 +298,7 @@ while whiles:
             comeOn.play() #Play this sound.
         elif current2play == 3: #If the number is 3,
             what.play() #Play this sound.
+        
         if current2play2 == 1:
             filler = 0 #Unknown purpose.
         elif current2play2 == 2:
@@ -296,11 +307,13 @@ while whiles:
             tripleKill.play() #Play this sound.
         elif current2play2 == 4:
             toasty.play() #Play this sound.
+        
         twoPlay = False #Set this variable to false to make sure sounds don't play again until enemy Sniper gets hit again.
     if characterX > otherX2: #If the Creeper approaches the character,
         rekt = True #set rekt to true, to make the game know that it has to do things.
     elif characterX < otherX1: #If the enemy Sniper approaches the character,
         rekt = True #set rekt to true, to make the game know that it has to do things.
+    
     #Due to issues with the sniper, we have to redraw the thing every refresh.
     #The background
     MAINWINDOW.fill(DARKISHBLUE) #We fill the window with this color.
@@ -360,6 +373,7 @@ while whiles:
             print("under certain conditions.") #Fourth line.
             print("\n")
             print("GitHub at https://github.com/OfficialPoniesFiM/RealRandomGame") #Refers people to the GitHub link.
+            
             whiles = False
     
     #The game updates.
@@ -367,5 +381,6 @@ while whiles:
     
     #We find how much milliseconds the last frame has taken, so we can apply it to frame-dependent variables.
     currentFrameTime = pygame.time.Clock.tick()
+
 pygame.quit() # Pygame quits.
 sys.exit() # Sys exits.
