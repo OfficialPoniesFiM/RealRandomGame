@@ -2,4 +2,3 @@
 color a
 cls
 main.py
-PAUSE
