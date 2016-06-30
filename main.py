@@ -40,7 +40,7 @@ pygame.display.set_caption("RandomGame 1.6") #This is the title of the window we
 print("Set up the caption!")
 
 #We have to fill in the window with black for the time the game loads.
-MAINWINDOW.fill(0, 0, 0)
+MAINWINDOW.fill((0,0,0))
 pygame.display.update() #This updates the screen.
 
 #We now have to load the images for many of the objects in the game.
