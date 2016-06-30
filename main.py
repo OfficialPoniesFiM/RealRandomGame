@@ -28,6 +28,20 @@ pygame.mixer.pre_init(44100, -16, 2, 2048) #Before we initialize, we need to set
 pygame.init() #We can now initialize Pygame and its modules.
 print("Initialized!")
 
+#We now have to make a window where we put all the things we render.
+print("Setting up the window...")
+#Sets up the main window.
+MAINWINDOW = pygame.display.set_mode((640,480)) #This makes a window that is 640 pixels by 480 pixels, basically 480p/i. 4:3 ratio.
+print("Set up the window!")
+
+#We now have to make a caption for the window. (The title basically)
+print("Setting up a caption...")
+pygame.display.set_caption("RandomGame 1.6") #This is the title of the window we use.
+print("Set up the caption!")
+
+#We have to fill in the window with black for the time the game loads.
+MAINWINDOW.fill(0, 0, 0)
+
 #We now have to load the images for many of the objects in the game.
 print("Now loading the main characters, the enemies, the particles, and other stuff.")
 
@@ -78,16 +92,6 @@ characterX = 320 #This is the X(horizontal) position. We use this to move.
 characterY = 300 #This is the Y(vertical) position. We generally don't need this to move. This is just the Y position.
 print("Finished with that...")
 
-#We now have to make a window where we put all the things we render.
-print("Setting up the window...")
-#Sets up the main window.
-MAINWINDOW = pygame.display.set_mode((640,480)) #This makes a window that is 640 pixels by 480 pixels, basically 480p/i. 4:3 ratio.
-print("Set up the window!")
-
-#We now have to make a caption for the window. (The title basically)
-print("Setting up a caption...")
-pygame.display.set_caption("RandomGame 1.6") #This is the title of the window we use.
-print("Set up the caption!")
 
 #We now have to make colors with variables. Typing BLACK or WHITE is easier and simpler than typing (0, 0, 0) or (255, 255, 255).
 print("Setting up the colors...")
