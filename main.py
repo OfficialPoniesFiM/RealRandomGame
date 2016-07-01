@@ -390,7 +390,7 @@ while whiles:
     
     scoretext = "Score: " + str(score) #Define what the text for the score is.
     textscore = RegFont.render(scoretext, 1, ORANGE) #Define the actual text to draw.
-    MAINWINDOW.blit(textscore, (0, 0)) #Draw the text on the screen.
+    MAINWINDOW.blit(textscore, (5, 0)) #Draw the text on the screen.
     
     if rekt == True: #If an enemy approached the character,
         if endPlayOne == True: #If we haven't play the sound yet.
@@ -419,7 +419,7 @@ while whiles:
     
     if pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
         pauseText = RegFont.render("Paused", 1, BLACK) #Define the text, "pauseText"
-        MAINWINDOW.blit(pauseText, (245, 210)) #Render pauseText to indicate the game has been paused.
+        MAINWINDOW.blit(pauseText, (225, 220)) #Render pauseText to indicate the game has been paused.
         pygame.display.update() #Update the window once to finish the frame and indicate the game has been paused.
     
     while pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
