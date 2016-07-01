@@ -20,6 +20,7 @@ print("Importing things...")
 import pygame, sys
 import random
 import os
+import time
 from pygame.locals import *
 print("Imported...")
 
