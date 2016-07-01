@@ -418,7 +418,10 @@ while whiles:
             if event.type == pygame.QUIT: #If the game gets exited while paused, it immediately quits and exits.
                 pygame.quit()
                 sys.exit()
+        pygame.mixer.pause() #It pauses the audio.
         pygame.display.update() #It also updates the screen to ensure the game keeps responding.
+    
+    pygame.mixer.unpause() #It ensures the audio keeps playing when not paused.
     
     #The game updates.
     pygame.display.update()
