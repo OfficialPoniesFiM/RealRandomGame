@@ -413,6 +413,13 @@ while whiles:
             
             whiles = False
     
+    while pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
+        for event in pygame.event.get(): #It will check for events to stop the game from not responding and for quitting.
+            if event.type == pygame.QUIT: #If the game gets exited while paused, it immediately quits and exits.
+                pygame.quit()
+                sys.exit()
+        pygame.display.update() #It also updates the screen to ensure the game keeps responding.
+    
     #The game updates.
     pygame.display.update()
     
