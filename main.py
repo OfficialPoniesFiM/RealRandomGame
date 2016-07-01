@@ -417,13 +417,17 @@ while whiles:
     else:
         MAINWINDOW.blit(cursorClick, (mouseX, mouseY)) #Draw the "cursor" at the mouse position when clicked.
     
+    if pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
+        pauseText = RegFont.render("Paused", 1, BLACK) #Define the text, "pauseText"
+        MAINWINDOW.blit(pauseText, (245, 210)) #Render pauseText to indicate the game has been paused.
+        pygame.display.update() #Update the window once to finish the frame and indicate the game has been paused.
+    
     while pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
         for event in pygame.event.get(): #It will check for events to stop the game from not responding and for quitting.
             if event.type == pygame.QUIT: #If the game gets exited while paused, it immediately quits and exits.
                 pygame.quit()
                 sys.exit()
         pygame.mixer.pause() #It pauses the audio.
-        pygame.display.update() #It also updates the screen to ensure the game keeps responding.
         time.sleep(.1) #It also waits .1 second until the loop runs again. This is to save CPU cycles.
     
     pygame.mixer.unpause() #It ensures the audio keeps playing when not paused.
