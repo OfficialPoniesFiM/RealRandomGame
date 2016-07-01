@@ -423,6 +423,7 @@ while whiles:
                 sys.exit()
         pygame.mixer.pause() #It pauses the audio.
         pygame.display.update() #It also updates the screen to ensure the game keeps responding.
+        time.sleep(.1) #It also waits .1 second until the loop runs again. This is to save CPU cycles.
     
     pygame.mixer.unpause() #It ensures the audio keeps playing when not paused.
     
