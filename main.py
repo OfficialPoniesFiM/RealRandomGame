@@ -62,6 +62,7 @@ hacker2 = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file_
 
 #Other stuff.
 cursorImage = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "cursor.png")) #We use this as a our "cursor".
+cursorClick = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "cursorclicked.png")) #We use this as a our "cursor" when clicked.
 logo = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "poniesfimlogo.png")) #The logo of the main developer.
 print("Finished loading those things!")
 
@@ -150,6 +151,7 @@ twoPlay = False #This represents the state of the sound that gets played when th
 rekt = False #This represents the state of when the enemy approaches the character.
 endPlayOne = True #This represents the state of when the end sound plays. If rekt = True, then the sounds will play and rekt will be set to False just to make sure the end sound plays one time.
 waitTillEnd = 4000 #This is how much time the game has until exiting if the enemy approaches the main character. This variable lowers itself every refresh. The game refreshes 1000 times a second, so 4000 ticks = 4 seconds.
+cClick = False #This represents the cursor state when clicked.
 
 #This initially draws the enemies.
 if directionToGoFirst == 1:
@@ -193,6 +195,12 @@ while whiles:
             
             if event.key == pygame.K_d or event.key == pygame.K_RIGHT: #Checks when someone stopped pressing the D/right key.
                 characterXRight = False #This variable gets set to false, so the character stops moving to the right/can move to the left.
+        
+        if event.type == pygame.MOUSEBUTTONDOWN: #Checks when someone is clicking on the mouse.
+            cClick = True #This variable gets set to True, so the cursor changes to indicate the click.
+
+        if event.type == pygame.MOUSEBUTTONUP: #Checks when someone releases a click on the mouse.
+            cClick = False #This variable gets set to False, so the cursor changes to indicate the release of the click.
     
     #We have to update the character parameters to move the thing at all properly.
     if directionToGoFirst == 1: #Mostly useless.
@@ -378,7 +386,10 @@ while whiles:
     
     #Cursor/Scores/similar
     MAINWINDOW.blit(logo, (540, 380)) #Draw the logo of the main developer.
-    MAINWINDOW.blit(cursorImage, (mouseX, mouseY)) #Draw the "cursor" at the mouse position.
+    if cClick == False:
+        MAINWINDOW.blit(cursorImage, (mouseX, mouseY)) #Draw the "cursor" at the mouse position.
+    else:
+        MAINWINDOW.blit(cursorClick, (mouseX, mouseY)) #Draw the "cursor" at the mouse position when clicked.
     
     scoretext = "Score: " + str(score) #Define what the text for the score is.
     textscore = RegFont.render(scoretext, 1, ORANGE) #Define the actual text to draw.
