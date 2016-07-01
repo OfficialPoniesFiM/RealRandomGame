@@ -105,6 +105,7 @@ WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
 
 #Sets up other/nicer colors. From Adobe Kuler. kuler.adobe.com
 DARKISHBLUE = (14, 164, 178)
@@ -389,7 +390,7 @@ while whiles:
             MAINWINDOW.blit(rhacker2, (hitSniperX, 300)) #We draw another version of the text, "U HACKER".
     
     scoretext = "Score: " + str(score) #Define what the text for the score is.
-    textscore = RegFont.render(scoretext, 1, ORANGE) #Define the actual text to draw.
+    textscore = RegFont.render(scoretext, 1, YELLOW) #Define the actual text to draw.
     MAINWINDOW.blit(textscore, (5, 0)) #Draw the text on the screen.
     
     if rekt == True: #If an enemy approached the character,
