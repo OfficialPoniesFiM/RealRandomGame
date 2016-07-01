@@ -86,7 +86,7 @@ print("Finished loading the sounds...")
 
 #We now have some fonts to prepare.
 print("Loading fonts...")
-RegFont = pygame.font.SysFont("Arial", 40, False, False) #This loads Arial at size 40, without bold, or italics.
+RegFont = pygame.font.Font(os.path.join(os.path.dirname(os.path.abspath(__file__)), "runescape_uf.ttf"), 40) #This loads the custom font at size 40, without bold, or italics.
 print("Finished loading fonts...")
 
 #We now have to set up statistics for the character, such as the position.
