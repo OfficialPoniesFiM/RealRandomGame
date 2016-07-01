@@ -188,6 +188,9 @@ while whiles:
             if event.key == pygame.K_d or event.key == pygame.K_RIGHT: #Checks when someone is pressing the D/right key.
                 characterXRight = True #This variable is set to True, so the main character can move to the right.
                 #print("Character now at " + str(characterX) + ", " + str(characterY))
+            
+            if event.key == pygame.K_ESCAPE:
+                whiles = False #Marks the game to exit at the end of the loop when the escape key is hit.
         
         if event.type == pygame.KEYUP: #Checks when someone stopped pressing the A/left key.
             if event.key == pygame.K_a or event.key == pygame.K_LEFT: #Checks when someone stopped pressing the A/left key.
