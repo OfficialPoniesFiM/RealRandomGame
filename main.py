@@ -384,13 +384,6 @@ while whiles:
         elif particle == 4: #If the random number was 4, 
             MAINWINDOW.blit(rhacker2, (hitSniperX, 300)) #We draw another version of the text, "U HACKER".
     
-    #Cursor/Scores/similar
-    MAINWINDOW.blit(logo, (540, 380)) #Draw the logo of the main developer.
-    if cClick == False:
-        MAINWINDOW.blit(cursorImage, (mouseX, mouseY)) #Draw the "cursor" at the mouse position.
-    else:
-        MAINWINDOW.blit(cursorClick, (mouseX, mouseY)) #Draw the "cursor" at the mouse position when clicked.
-    
     scoretext = "Score: " + str(score) #Define what the text for the score is.
     textscore = RegFont.render(scoretext, 1, ORANGE) #Define the actual text to draw.
     MAINWINDOW.blit(textscore, (0, 0)) #Draw the text on the screen.
@@ -412,6 +405,13 @@ while whiles:
             print("GitHub at https://github.com/OfficialPoniesFiM/RealRandomGame") #Refers people to the GitHub link.
             
             whiles = False
+    
+    #Cursor/Scores/similar
+    MAINWINDOW.blit(logo, (540, 380)) #Draw the logo of the main developer.
+    if cClick == False:
+        MAINWINDOW.blit(cursorImage, (mouseX, mouseY)) #Draw the "cursor" at the mouse position.
+    else:
+        MAINWINDOW.blit(cursorClick, (mouseX, mouseY)) #Draw the "cursor" at the mouse position when clicked.
     
     while pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
         for event in pygame.event.get(): #It will check for events to stop the game from not responding and for quitting.
