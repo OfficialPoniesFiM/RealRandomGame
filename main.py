@@ -401,7 +401,7 @@ while whiles:
             endSound.play() #Play the end sound.
             endPlayOne = False #Set the variable to false to make sure the sound doesn't play multiple times/sound peculiar.
         endRekt = RegFont.render("#REKT", 1, ORANGE) #Define the text, "#REKT".
-        MAINWINDOW.blit(endRekt, (280, 240)) #Render the text.
+        MAINWINDOW.blit(endRekt, (280 + random.randint(-5, 5), 240 + random.randint(-5,5))) #Render the text.
         waitTillEnd -= 1 #Remove 1 tick from the variable until we run out. This is useful for the sound and other things.
         if waitTillEnd == 0: #If we run out,
             #We have to print some copyright stuff. Again.
