@@ -389,6 +389,9 @@ while whiles:
         elif particle == 4: #If the random number was 4, 
             MAINWINDOW.blit(rhacker2, (hitSniperX, 300)) #We draw another version of the text, "U HACKER".
     
+    playerName = RegFont.render("Player", 1, YELLOW) #Define playerName to display on top of the main character
+    MAINWINDOW.blit(playerName, (characterX + 10, 260)) #Draw "Player" on top of the character.
+    
     scoretext = "Score: " + str(score) #Define what the text for the score is.
     textscore = RegFont.render(scoretext, 1, YELLOW) #Define the actual text to draw.
     MAINWINDOW.blit(textscore, (5, 0)) #Draw the text on the screen.
