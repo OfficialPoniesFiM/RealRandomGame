@@ -38,7 +38,7 @@ print("Set up the window!")
 
 #We now have to make a caption for the window. (The title basically)
 print("Setting up a caption...")
-pygame.display.set_caption("RandomGame 1.7") #This is the title of the window we use.
+pygame.display.set_caption("RandomGame 1.8") #This is the title of the window we use.
 print("Set up the caption!")
 
 #We have to fill in the window with black for the time the game loads.
