@@ -451,6 +451,10 @@ while whiles:
             if event.type == pygame.QUIT: #If the game gets exited while paused, it immediately quits and exits.
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE: #Checks if the escape key gets hit. If it does, the game exits.
+                    pygame.quit()
+                    sys.exit()
         pygame.mixer.pause() #It pauses the audio.
         time.sleep(.1) #It also waits .1 second until the loop runs again. This is to save CPU cycles.
     
