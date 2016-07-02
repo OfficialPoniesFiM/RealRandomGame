@@ -211,7 +211,7 @@ while whiles:
             
             if event.key == pygame.K_d or event.key == pygame.K_RIGHT: #Checks when someone stopped pressing the D/right key.
                 characterXRight = False #This variable gets set to false, so the character stops moving to the right/can move to the left.
-        
+
         if event.type == pygame.MOUSEBUTTONDOWN: #Checks when someone is clicking on the mouse.
             cClick = True #This variable gets set to True, so the cursor changes to indicate the click.
 
@@ -404,7 +404,7 @@ while whiles:
             MAINWINDOW.blit(rhacker1, (hitSniperX, 300)) #We draw a version of the text, "U HACKER".
         elif particle == 4: #If the random number was 4, 
             MAINWINDOW.blit(rhacker2, (hitSniperX, 300)) #We draw another version of the text, "U HACKER".
-    
+
     playerName = RegFont.render("Player", 1, YELLOW) #Define playerName to display on top of the main character
     MAINWINDOW.blit(playerName, (characterX + 10, 260)) #Draw "Player" on top of the character.
     
@@ -435,10 +435,10 @@ while whiles:
         elif rektColor == YELLOW: #If the color is yellow,
             endRekt = RegFont.render("#REKT", 1, YELLOW) #Define the text, "#REKT", as yellow.
             rektColor = BLACK #Change the color to black again.
-        
+            
         MAINWINDOW.blit(endRekt, (280 + random.randint(-5, 5), 240 + random.randint(-5,5))) #Render the text.
-        waitTillEnd -= 1 * currentFrameTime #Remove 1 tick from the variable until we run out. This is useful for the sound and other things.
-        if waitTillEnd == 0: #If we run out,
+        waitTillEnd -= 1 * (currentFrameTime) #Remove 1 tick from the variable until we run out. This is useful for the sound and other things.
+        if waitTillEnd <= 0: #If we run out,
             #We have to print some copyright stuff. Again.
             print("RandomGame Copyright (C) 2016 Nathan Guerrero/PoniesFiM") #First line
             print("This program comes with ABSOLUTELY NO WARRANTY; for details go to GPL.txt or README.txt") #Second line
@@ -460,7 +460,7 @@ while whiles:
     
     #The game updates.
     pygame.display.update()
-    
+
     if pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
         pauseText = RegFont.render("Paused", 1, BLACK) #Define the text, "pauseText"
         MAINWINDOW.blit(pauseText, (255, 220)) #Render pauseText to indicate the game has been paused.
