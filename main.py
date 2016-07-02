@@ -158,7 +158,7 @@ twoPlay = False #This represents the state of the sound that gets played when th
 rekt = False #This represents the state of when the enemy approaches the character.
 rektColor = BLACK #This represents the color when the enemy approaches the character.
 endPlayOne = True #This represents the state of when the end sound plays. If rekt = True, then the sounds will play and rekt will be set to False just to make sure the end sound plays one time.
-waitTillEnd = 4000 #This is how much time the game has until exiting if the enemy approaches the main character. This variable lowers itself every refresh. The game refreshes 1000 times a second, so 4000 ticks = 4 seconds.
+waitTillEnd = 11000 #This is how much time the game has until exiting if the enemy approaches the main character. This variable lowers itself every refresh. The game refreshes 1000 times a second, so 4000 ticks = 4 seconds.
 cClick = False #This represents the cursor state when clicked.
 bgImage = random.randint(1,3) #This chooses what background image shows.
 
@@ -228,10 +228,10 @@ while whiles:
         filler = 0 #Nothing really happens. Just a filler variable set to make sure nothing wrong happens.
         
         if leftSpeed > 0: #If no one is moving, then slow down both sides.
-            leftSpeed -= .05
+            leftSpeed -= .025
         
         if rightSpeed > 0:
-            rightSpeed -= .05
+            rightSpeed -= .025
     
     elif characterXLeft == True: #If the character is moving left,
         characterX -= leftSpeed * currentFrameTime #.15 * currentFrameTime is removed from its X position to move left.
@@ -242,10 +242,10 @@ while whiles:
             characterX = 0 #Sets the character X position to 0 if the X position is too little, to make sure the character doesn't get out of the window.
         
         if leftSpeed < .50: #If you're going left, increase leftSpeed while slowing rightSpeed.
-            leftSpeed += .05
+            leftSpeed += .025
         
         if rightSpeed > 0:
-            rightSpeed -= .05
+            rightSpeed -= .025
     
     elif characterXRight == True: #If the character is moving right,
         characterX += rightSpeed * currentFrameTime #.15 * milliseconds from last frame is added to its X position to move right.
@@ -257,10 +257,10 @@ while whiles:
             characterX = 0 #Sets the character X position to 0 if the X position is too little, to make sure the character doesn't get out of the window.
         
         if rightSpeed < .50: #If you're going left, increase rightSpeed while slowing leftSpeed.
-            rightSpeed += .05
+            rightSpeed += .025
         
         if leftSpeed > 0:
-            leftSpeed -= .05
+            leftSpeed -= .025
     
     doneforever = 1 #This variable is used to make sure the mouse X and mouse Y get captured properly.
     for x in pygame.mouse.get_pos(): #pygame.mouse.get_pos() returns a tuple with the X and Y position, so we have to get each individual part properly.
@@ -454,6 +454,11 @@ while whiles:
     else:
         MAINWINDOW.blit(cursorClick, (mouseX - 8, mouseY - 8)) #Draw the "cursor" at the mouse position when clicked.
     
+    pygame.mixer.unpause() #It ensures the audio keeps playing when not paused.
+    
+    #The game updates.
+    pygame.display.update()
+    
     if pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
         pauseText = RegFont.render("Paused", 1, BLACK) #Define the text, "pauseText"
         MAINWINDOW.blit(pauseText, (225, 220)) #Render pauseText to indicate the game has been paused.
@@ -468,13 +473,9 @@ while whiles:
                 if event.key == pygame.K_ESCAPE: #Checks if the escape key gets hit. If it does, the game exits.
                     pygame.quit()
                     sys.exit()
+        
         pygame.mixer.pause() #It pauses the audio.
         time.sleep(.1) #It also waits .1 second until the loop runs again. This is to save CPU cycles.
-    
-    pygame.mixer.unpause() #It ensures the audio keeps playing when not paused.
-    
-    #The game updates.
-    pygame.display.update()
 
 pygame.quit() # Pygame quits.
 sys.exit() # Sys exits.
