@@ -48,6 +48,11 @@ pygame.display.update() #This updates the screen.
 #We now have to load the images for many of the objects in the game.
 print("Now loading the main characters, the enemies, the particles, and other stuff.")
 
+#The background images.
+rust = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "rust.png"))
+hijacked = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "hijacked.png"))
+nuketown = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "nuketown.png"))
+
 #The images.
 mainSniper = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "sniper.png")) #Main character(you play this).
 
@@ -155,6 +160,7 @@ rektColor = BLACK #This represents the color when the enemy approaches the chara
 endPlayOne = True #This represents the state of when the end sound plays. If rekt = True, then the sounds will play and rekt will be set to False just to make sure the end sound plays one time.
 waitTillEnd = 4000 #This is how much time the game has until exiting if the enemy approaches the main character. This variable lowers itself every refresh. The game refreshes 1000 times a second, so 4000 ticks = 4 seconds.
 cClick = False #This represents the cursor state when clicked.
+bgImage = random.randint(1,3) #This chooses what background image shows.
 
 #This initially draws the enemies.
 if directionToGoFirst == 1:
@@ -356,7 +362,12 @@ while whiles:
     
     #Due to issues with the sniper, we have to redraw the thing every refresh.
     #The background
-    MAINWINDOW.fill(DARKISHBLUE) #We fill the window with this color.
+    if bgImage == 1:
+        MAINWINDOW.blit(rust, (0, 0)) #We draw rust if bgImage = 1.
+    elif bgImage == 2:
+        MAINWINDOW.blit(hijacked, (0, 0)) #We draw hijacked if bgImage = 2.
+    elif bgImage == 3:
+        MAINWINDOW.blut(nuketown, (0, 0)) #We draw nuketown if bgImage = 3.
     
     #The ground(terrain)
     pygame.draw.rect(MAINWINDOW, GREEN, (0, 440, 640, 450)) #We draw the grass(a green rectangle,
