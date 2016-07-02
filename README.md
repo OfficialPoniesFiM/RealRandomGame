@@ -6,7 +6,7 @@ Python 3 and Pygame 1.9.2+.
 
 A simple, stupid game created as a project for school to teach people about Python programming.
 
-![image](https://cloud.githubusercontent.com/assets/7811992/16512504/0866865a-3f11-11e6-8fe5-94493d9ca288.png)
+![image](https://cloud.githubusercontent.com/assets/7811992/16538241/6c902aa6-3fd3-11e6-8291-50e33003d856.png)
 
 Copyright Stuff:
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
