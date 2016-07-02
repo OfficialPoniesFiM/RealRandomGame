@@ -161,6 +161,7 @@ endPlayOne = True #This represents the state of when the end sound plays. If rek
 waitTillEnd = 11000 #This is how much time the game has until exiting if the enemy approaches the main character. This variable lowers itself every refresh. The game refreshes 1000 times a second, so 4000 ticks = 4 seconds.
 cClick = False #This represents the cursor state when clicked.
 bgImage = random.randint(1,3) #This chooses what background image shows.
+pauseTime = 0 #This is how much time the pause takes.
 
 #This initially draws the enemies.
 if directionToGoFirst == 1:
@@ -176,7 +177,8 @@ clock = pygame.time.Clock() #The clock for delta time.
 #The actual game loop.
 while whiles:
     #We find how much milliseconds the last frame has taken, so we can apply it to frame-dependent variables.
-    currentFrameTime = clock.tick()
+    currentFrameTime = clock.tick() - pauseTime
+    pauseTime = 0
     
     pygame.mouse.set_visible(False) #This makes the cursor invisible, so we can use an image as a cursor.
     
@@ -476,6 +478,7 @@ while whiles:
         
         pygame.mixer.pause() #It pauses the audio.
         time.sleep(.1) #It also waits .1 second until the loop runs again. This is to save CPU cycles.
+        pauseTime += 100
 
 pygame.quit() # Pygame quits.
 sys.exit() # Sys exits.
