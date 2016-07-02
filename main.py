@@ -367,7 +367,7 @@ while whiles:
     elif bgImage == 2:
         MAINWINDOW.blit(hijacked, (0, 0)) #We draw hijacked if bgImage = 2.
     elif bgImage == 3:
-        MAINWINDOW.blut(nuketown, (0, 0)) #We draw nuketown if bgImage = 3.
+        MAINWINDOW.blit(nuketown, (0, 0)) #We draw nuketown if bgImage = 3.
     
     #The ground(terrain)
     pygame.draw.rect(MAINWINDOW, GREEN, (0, 440, 640, 450)) #We draw the grass(a green rectangle,
