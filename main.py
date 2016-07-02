@@ -437,9 +437,9 @@ while whiles:
     #Cursor/Scores/similar
     MAINWINDOW.blit(logo, (540, 380)) #Draw the logo of the main developer.
     if cClick == False:
-        MAINWINDOW.blit(cursorImage, (mouseX, mouseY)) #Draw the "cursor" at the mouse position.
+        MAINWINDOW.blit(cursorImage, (mouseX - 8, mouseY - 8)) #Draw the "cursor" at the mouse position.
     else:
-        MAINWINDOW.blit(cursorClick, (mouseX, mouseY)) #Draw the "cursor" at the mouse position when clicked.
+        MAINWINDOW.blit(cursorClick, (mouseX - 8, mouseY - 8)) #Draw the "cursor" at the mouse position when clicked.
     
     if pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
         pauseText = RegFont.render("Paused", 1, BLACK) #Define the text, "pauseText"
