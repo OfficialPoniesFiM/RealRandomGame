@@ -350,7 +350,7 @@ while whiles:
         twoPlay = False #Set this variable to false to make sure sounds don't play again until enemy Sniper gets hit again.
     if characterX > otherX2 - 125: #If the Creeper approaches the character,
         rekt = True #set rekt to true, to make the game know that it has to do things.
-    elif characterX < otherX1 + 200: #If the enemy Sniper approaches the character,
+    elif characterX < otherX1 + 185: #If the enemy Sniper approaches the character,
         rekt = True #set rekt to true, to make the game know that it has to do things.
     
     #Due to issues with the sniper, we have to redraw the thing every refresh.
