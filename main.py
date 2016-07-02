@@ -437,7 +437,7 @@ while whiles:
             rektColor = BLACK #Change the color to black again.
         
         MAINWINDOW.blit(endRekt, (280 + random.randint(-5, 5), 240 + random.randint(-5,5))) #Render the text.
-        waitTillEnd -= 1 #Remove 1 tick from the variable until we run out. This is useful for the sound and other things.
+        waitTillEnd -= 1 * currentFrameTime #Remove 1 tick from the variable until we run out. This is useful for the sound and other things.
         if waitTillEnd == 0: #If we run out,
             #We have to print some copyright stuff. Again.
             print("RandomGame Copyright (C) 2016 Nathan Guerrero/PoniesFiM") #First line
