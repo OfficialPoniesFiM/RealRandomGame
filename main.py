@@ -261,7 +261,7 @@ while whiles:
         
         elif doneforever == 2: #If the doneforever variable is 2,
             mouseY = int(x) #store the Y position in a variable.
-    globalDirection += 5 #This sets the direction of the particles.
+    globalDirection += 1 #This sets the direction of the particles.
     rmlg = pygame.transform.rotate(mlg, globalDirection) #The rotated version of this particle is stored in another "variable".
     rmachinima = pygame.transform.rotate(machinima, globalDirection) #The rotated version of this particle is stored in another "variable".
     rhacker1 = pygame.transform.rotate(hacker1, globalDirection) #The rotated version of this particle is stored in another "variable".
