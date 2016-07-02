@@ -463,7 +463,7 @@ while whiles:
     
     if pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
         pauseText = RegFont.render("Paused", 1, BLACK) #Define the text, "pauseText"
-        MAINWINDOW.blit(pauseText, (225, 220)) #Render pauseText to indicate the game has been paused.
+        MAINWINDOW.blit(pauseText, (255, 220)) #Render pauseText to indicate the game has been paused.
         pygame.display.update() #Update the window once to finish the frame and indicate the game has been paused.
     
     while pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
