@@ -171,11 +171,13 @@ if directionToGoFirst == 1:
 
 #The game loop setup.
 whiles = True
-currentFrameTime = 1
-#pygame.time.Clock.tick()
+clock = pygame.time.Clock() #The clock for delta time.
 
 #The actual game loop.
 while whiles:
+    #We find how much milliseconds the last frame has taken, so we can apply it to frame-dependent variables.
+    currentFrameTime = clock.tick()
+    
     pygame.mouse.set_visible(False) #This makes the cursor invisible, so we can use an image as a cursor.
     
     for event in pygame.event.get(): #looks for events.
@@ -473,9 +475,6 @@ while whiles:
     
     #The game updates.
     pygame.display.update()
-    
-    #We find how much milliseconds the last frame has taken, so we can apply it to frame-dependent variables.
-    #currentFrameTime = pygame.time.Clock.tick()
 
 pygame.quit() # Pygame quits.
 sys.exit() # Sys exits.
