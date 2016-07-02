@@ -151,6 +151,7 @@ otherKilled = False #Unknown purpose.
 onePlay = False #This represents the state of the sound that gets played when the Creeper is hit. When the Creeper gets hit, this is set to true, so the sound will play. This variable is set to False after a sound plays to make sure that it plays once.
 twoPlay = False #This represents the state of the sound that gets played when the enemy Sniper is hit. When the enemy Sniper gets hit, this is set to true, so the sound will play. This variable is set to False after a sound plays to make sure that it plays once.
 rekt = False #This represents the state of when the enemy approaches the character.
+rektColor = BLACK #This represents the color when the enemy approaches the character.
 endPlayOne = True #This represents the state of when the end sound plays. If rekt = True, then the sounds will play and rekt will be set to False just to make sure the end sound plays one time.
 waitTillEnd = 4000 #This is how much time the game has until exiting if the enemy approaches the main character. This variable lowers itself every refresh. The game refreshes 1000 times a second, so 4000 ticks = 4 seconds.
 cClick = False #This represents the cursor state when clicked.
@@ -400,7 +401,26 @@ while whiles:
         if endPlayOne == True: #If we haven't play the sound yet.
             endSound.play() #Play the end sound.
             endPlayOne = False #Set the variable to false to make sure the sound doesn't play multiple times/sound peculiar.
-        endRekt = RegFont.render("#REKT", 1, ORANGE) #Define the text, "#REKT".
+        
+        if rektColor == BLACK: #If the color is black,
+            endRekt = RegFont.render("#REKT", 1, BLACK) #Define the text, "#REKT", as black.
+            rektColor = WHITE #Change the color to white.
+        elif rektColor == WHITE: #If the color is white,
+            endRekt = RegFont.render("#REKT", 1, WHITE) #Define the text, "#REKT", as white.
+            rektColor = RED #Change the color to red.
+        elif rektColor == RED: #If the color is red,
+            endRekt = RegFont.render("#REKT", 1, RED) #Define the text, "#REKT", as red.
+            rektColor = GREEN #Change the color to green.
+        elif rektColor == GREEN: #If the color is green,
+            endRekt = RegFont.render("#REKT", 1, GREEN) #Define the text, "#REKT", as green.
+            rektColor = BLUE #Change the color to blue.
+        elif rektColor == BLUE: #If the color is blue,
+            endRekt = RegFont.render("#REKT", 1, BLUE) #Define the text, "#REKT", as blue.
+            rektColor = YELLOW #Change the color to yellow.
+        elif rektColor == YELLOW: #If the color is yellow,
+            endRekt = RegFont.render("#REKT", 1, YELLOW) #Define the text, "#REKT", as yellow.
+            rektColor = BLACK #Change the color to black again.
+        
         MAINWINDOW.blit(endRekt, (280 + random.randint(-5, 5), 240 + random.randint(-5,5))) #Render the text.
         waitTillEnd -= 1 #Remove 1 tick from the variable until we run out. This is useful for the sound and other things.
         if waitTillEnd == 0: #If we run out,
