@@ -162,6 +162,7 @@ waitTillEnd = 11000 #This is how much time the game has until exiting if the ene
 cClick = False #This represents the cursor state when clicked.
 bgImage = random.randint(1,3) #This chooses what background image shows.
 pauseTime = 0 #This is how much time the pause takes.
+frameDebug = False #This is whether to show frame times.
 
 #This initially draws the enemies.
 if directionToGoFirst == 1:
@@ -204,6 +205,12 @@ while whiles:
             
             if event.key == pygame.K_ESCAPE:
                 whiles = False #Marks the game to exit at the end of the loop when the escape key is hit.
+            
+            if event.key == pygame.K_f: #Checks when someone is pressing the F key.
+                if frameDebug == False: #If frameDebug is False, change it to True.
+                    frameDebug = True
+                else: #If frameDebug is True, change it to False.
+                    frameDebug = False
         
         if event.type == pygame.KEYUP: #Checks when someone stopped pressing the A/left key.
             if event.key == pygame.K_a or event.key == pygame.K_LEFT: #Checks when someone stopped pressing the A/left key.
@@ -411,6 +418,11 @@ while whiles:
     scoretext = "Score: " + str(score) #Define what the text for the score is.
     textscore = RegFont.render(scoretext, 1, YELLOW) #Define the actual text to draw.
     MAINWINDOW.blit(textscore, (5, 0)) #Draw the text on the screen.
+    
+    if frameDebug == True: #If frameDebug is True,
+        frameText = "Frame Time: " + str(currentFrameTime) + " ms" #Define the text frameText, with Frame Time: (frame time) ms.
+        frameTextRender = RegFont.render(frameText, 1, YELLOW) #Define the actual text to draw.
+        MAINWINDOW.blit(frameTextRender, (5, 445)) #Draw the frame time on the screen.
     
     if rekt == True: #If an enemy approached the character,
         if endPlayOne == True: #If we haven't play the sound yet.
