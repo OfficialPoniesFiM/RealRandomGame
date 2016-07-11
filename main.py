@@ -97,7 +97,7 @@ print("Finished loading fonts...")
 #We now have to set up statistics for the character, such as the position.
 print("Setting up parameters for the main character...")
 #Parameters for the main character.
-characterX = 320 #This is the X(horizontal) position. We use this to move.
+characterX = 220 #This is the X(horizontal) position. We use this to move.
 characterY = 300 #This is the Y(vertical) position. We generally don't need this to move. This is just the Y position.
 print("Finished with that...")
 
