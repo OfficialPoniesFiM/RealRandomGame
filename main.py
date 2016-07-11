@@ -53,6 +53,11 @@ rust = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__))
 hijacked = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "hijacked.png"))
 nuketown = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "nuketown.png"))
 
+#The blurred background images. They show up when the game is paused.
+rustblur = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "rustblurred.png"))
+hijackedblur = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "hijackedblurred.png"))
+nuketownblur = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "nuketownblurred.png"))
+
 #The images.
 mainSniper = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "sniper.png")) #Main character(you play this).
 
@@ -474,6 +479,14 @@ while whiles:
     pygame.display.update()
 
     if pygame.mouse.get_focused() == False: #If the mouse does not hover over the window,
+        #Blit the blurred image.
+        if bgImage == 1:
+            MAINWINDOW.blit(rustblur, (0, 0)) #We draw rust with blur if bgImage = 1.
+        elif bgImage == 2:
+            MAINWINDOW.blit(hijackedblur, (0, 0)) #We draw hijacked with blur if bgImage = 2.
+        elif bgImage == 3:
+            MAINWINDOW.blit(nuketownblur, (0, 0)) #We draw nuketown with blur if bgImage = 3.
+        
         pauseText = RegFont.render("Paused", 1, BLACK) #Define the text, "pauseText"
         MAINWINDOW.blit(pauseText, (255, 220)) #Render pauseText to indicate the game has been paused.
         pygame.display.update() #Update the window once to finish the frame and indicate the game has been paused.
