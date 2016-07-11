@@ -171,6 +171,8 @@ bgImage = random.randint(1,3) #This chooses what background image shows.
 pauseTime = 0 #This is how much time the pause takes.
 frameDebug = False #This is whether to show frame times.
 prevScore = 0 #This is the previous score that the 100 combo has written down.
+creeperShoot = 1500 #This is how many ticks time has to take after the creeper shot.
+sniperShoot = 1500 #This is how many ticks time has to take after the creeper shot.
 
 #This initially draws the enemies.
 if directionToGoFirst == 1:
@@ -294,7 +296,9 @@ while whiles:
     rhacker2 = pygame.transform.rotate(hacker2, globalDirection) #The rotated version of this particle is stored in another "variable".
     
     if pygame.mouse.get_pressed() == (False, False, True): #If the right mouse button is clicked, and the others aren't,
-        gunshot.play() #Play a laser gun sound.
+        if creeperShoot == 1500: #If the time is on,
+            gunshot.play() #Play a gunshot sound.
+            creeperShoot -= currentFrameTime #Remove the current frame time from creeperShoot.
         if directionToGoFirst == 1 and otherX2 < 540: #If the Creeper is in the right position,
             onePlay = True #Set the onePlay variable to True, to make the sound play.
             hitCreeper = True #Set the hitCreeper variable to true.
@@ -303,13 +307,25 @@ while whiles:
             score += 1 #Score gets higher.
     
     elif pygame.mouse.get_pressed() == (True, False, False): #If the left mouse button is clicked, and the others aren't,
-        gunshot.play() #Play a laser gun sound.
+        if sniperShoot == 1500: #If the time is on,
+            gunshot.play() #Play a gunshot sound.
+            sniperShoot -= currentFrameTime #Remove the current frame time from sniperShoot.
         if directionToGoFirst == 1 and otherX1 > -100: #If the enemy sniper is in the right position,
             twoPlay = True #Set the twoPlay variable to True, to have the sound play.
             hitSniper = True #Set the hitSniper variable to true.
             hitSniperX = otherX1 #Set the hitSniperX variable to the current X position, so the particles know where to render.
             otherX1 = -200 #Go back to the left. Out of the window.
             score += 1 #Score gets higher.
+    
+    if creeperShoot < 1500 and creeperShoot > 0: #If creeperShoot is less than 1500 ticks and greater than 0 ticks,
+        creeperShoot -= currentFrameTime #Remove current frame time from creeperShoot.
+    elif creeperShoot <= 0: #If the time runs out,
+        creeperShoot = 1500 #Reset creeperShoot to 1500.
+
+    if sniperShoot < 1500 and sniperShoot > 0: #If sniperShoot is less than 1500 ticks and greater than 0 ticks,
+        sniperShoot -= currentFrameTime #Remove current frame time from sniperShoot.
+    elif creeperShoot <= 0: #If the time runs out,
+        sniperShoot = 1500 #Reset sniperShoot to 1500.
     
     if hitCreeper == True: #If the creeper gets hit,
         hitCreeperTime -= 1 #Makes game remove ticks until goes to 0.
