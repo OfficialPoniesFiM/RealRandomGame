@@ -28,6 +28,7 @@ print("Imported...")
 print("Initializing PyGame...")
 pygame.mixer.pre_init(44100, -16, 2, 2048) #Before we initialize, we need to set up how the sounds will be played.
 pygame.init() #We can now initialize Pygame and its modules.
+pygame.mixer.set_num_channels(64) #Allow more sounds to play at once.
 print("Initialized!")
 
 #We now have to make a window where we put all the things we render.
