@@ -92,6 +92,7 @@ gunshot = pygame.mixer.Sound(os.path.join(os.path.dirname(os.path.abspath(__file
 weed = pygame.mixer.Sound(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Sounds", "weed.ogg")) #Extra sound that plays when kill.
 tripleKill = pygame.mixer.Sound(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Sounds", "triplekill.ogg"))  #Extra sound that plays when kill.
 toasty = pygame.mixer.Sound(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Sounds", "toasty.ogg")) #Extra sound that plays when kill.
+damnSon = pygame.mixer.Sound(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Sounds", "damnson.ogg")) #Combo sound that plays when score is divisible by 100.
 print("Finished loading the sounds...")
 
 #We now have some fonts to prepare.
@@ -168,6 +169,7 @@ cClick = False #This represents the cursor state when clicked.
 bgImage = random.randint(1,3) #This chooses what background image shows.
 pauseTime = 0 #This is how much time the pause takes.
 frameDebug = False #This is whether to show frame times.
+prevScore = 0 #This is the previous score that the 100 combo has written down.
 
 #This initially draws the enemies.
 if directionToGoFirst == 1:
@@ -375,6 +377,10 @@ while whiles:
         rekt = True #set rekt to true, to make the game know that it has to do things.
     elif characterX < otherX1 + 185: #If the enemy Sniper approaches the character,
         rekt = True #set rekt to true, to make the game know that it has to do things.
+
+    if (score % 100) == 0 and prevScore != score: #If the score is divisible by 100, and the score isn't the same as before,
+        damnSon.play() #Play the damn son sound.
+        prevScore = score #Change the previous score to the score the game had when divisible by 100.
     
     #Due to issues with the sniper, we have to redraw the thing every refresh.
     #The background
@@ -422,8 +428,11 @@ while whiles:
     
     scoretext = "Score: " + str(score) #Define what the text for the score is.
     textscore = RegFont.render(scoretext, 1, YELLOW) #Define the actual text to draw.
+    if (score % 100) == 0 and score != 0: #If score is divisible by 100,
+        scoretext = "Score: " + str(score) + " (DAMN SON!)" #Define what the text for the score is, along with (damn son!).
+        textscore = RegFont.render(scoretext, 1, BLACK) #Define the actual text to draw as black.
     MAINWINDOW.blit(textscore, (5, 0)) #Draw the text on the screen.
-    
+
     if frameDebug == True: #If frameDebug is True,
         frameText = "Frame Time: " + str(currentFrameTime) + " ms" #Define the text frameText, with Frame Time: (frame time) ms.
         frameTextRender = RegFont.render(frameText, 1, YELLOW) #Define the actual text to draw.
