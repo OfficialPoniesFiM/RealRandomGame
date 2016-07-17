@@ -77,7 +77,13 @@ cursorImage = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__f
 cursorClick = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "cursorclicked.png")) #We use this as a our "cursor" when clicked.
 logo = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "poniesfimlogo.png")) #The logo of the main developer.
 leaf = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "weed.png")) #The cannabis leaf for the 420 combo.
+icon = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "icon.png")) #The icon for the game window.
 print("Finished loading those things!")
+
+#Set up the icon.
+print("Setting up the icon...")
+pygame.display.set_icon(icon) #Set the icon to the one we just loaded.
+print("Set up the icon!")
 
 #We have some sounds we need to get.
 print("Loading the sounds...")
