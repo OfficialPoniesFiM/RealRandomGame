@@ -76,6 +76,7 @@ hacker2 = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file_
 cursorImage = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "cursor.png")) #We use this as a our "cursor".
 cursorClick = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "cursorclicked.png")) #We use this as a our "cursor" when clicked.
 logo = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "poniesfimlogo.png")) #The logo of the main developer.
+leaf = pygame.image.load(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Pictures", "weed.png")) #The cannabis leaf for the 420 combo.
 print("Finished loading those things!")
 
 #We have some sounds we need to get.
@@ -173,6 +174,8 @@ frameDebug = False #This is whether to show frame times.
 prevScore = 0 #This is the previous score that the 100 combo has written down.
 creeperShoot = 1500 #This is how many ticks time has to take after the creeper shot.
 sniperShoot = 1500 #This is how many ticks time has to take after the creeper shot.
+weedCombo = False #This is whether the 420 combo has been set off.
+weedTicks = 2000 #This is how much time the cannabis leaf shows for the 420 combo.
 
 #This initially draws the enemies.
 if directionToGoFirst == 1:
@@ -398,6 +401,13 @@ while whiles:
     if (score % 100) == 0 and prevScore != score: #If the score is divisible by 100, and the score isn't the same as before,
         damnSon.play() #Play the damn son sound.
         prevScore = score #Change the previous score to the score the game had when divisible by 100.
+
+    if score == 420 and weedCombo == False: #If the score is 420, and the combo hasn't been set off yet,
+        weedCombo = True #Set the weedCombo to True so this doesn't trigger again.
+        weed.play() #Play the smoke weed sound.
+        weedTicks -= currentFrameTime #Remove currentFrameTime from weedTicks to trigger the timer.
+    elif weedTicks < 2000 and weedTicks > 0: #If weedTicks is more than 0 and less than 2000,
+        weedTicks -= currentFrameTime #Remove currentFrameTime from weedTicks.
     
     #Due to issues with the sniper, we have to redraw the thing every refresh.
     #The background
@@ -407,6 +417,10 @@ while whiles:
         MAINWINDOW.blit(hijacked, (0, 0)) #We draw hijacked if bgImage = 2.
     elif bgImage == 3:
         MAINWINDOW.blit(nuketown, (0, 0)) #We draw nuketown if bgImage = 3.
+    
+    #Draw the cannabis leaf
+    if weedTicks < 2000 and weedTicks > 0: #If weedTicks is less than 2000, and more than 0,
+        MAINWINDOW.blit(leaf, (110, 32)) #Draw the cannabis leaf at the center of the screen.
     
     #The ground(terrain)
     pygame.draw.rect(MAINWINDOW, GREEN, (0, 440, 640, 450)) #We draw the grass(a green rectangle,
@@ -448,6 +462,9 @@ while whiles:
     if (score % 100) == 0 and score != 0: #If score is divisible by 100,
         scoretext = "Score: " + str(score) + " (DAMN SON!)" #Define what the text for the score is, along with (damn son!).
         textscore = RegFont.render(scoretext, 1, BLACK) #Define the actual text to draw as black.
+    elif score == 420: #If score is 420,
+        scoretext = "Score: " + str(score) + " BLAZE IT" #Define what the text for the score is, along with BLAZE IT.
+        textscore = RegFont.render(scoretext, 1, GREEN) #Define the actual text to draw as black.
     MAINWINDOW.blit(textscore, (5, 0)) #Draw the text on the screen.
 
     if frameDebug == True: #If frameDebug is True,
